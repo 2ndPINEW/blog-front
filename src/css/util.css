@@ -1,0 +1,9 @@
+* {
+  transition: all 300ms, background-color 0s;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,129 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+  width: 100vw;
+  transition: none;
+
+  overflow: hidden;
+
+  .header-background {
+    background-color: var(--color-surface);
+
+    border-bottom-right-radius: 1000px 200px;
+    border-bottom-left-radius: 1000px 200px;
+    
+    margin-left: -100px;
+    margin-right: -100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 32px;
+
+    .header-content {
+      padding: 16px;
+
+      .site-title {
+        display: flex;
+        width: fit-content;
+
+        &:hover {
+          scale: 1.1;
+          cursor: pointer;
+        }
+    
+        .icon {
+          width: 32px;
+          height: 32px;
+        }
+    
+        .title {
+          margin-left: 8px;
+          font-size: 18px;
+          font-weight: bold;
+          color: var(--color-on-surface);
+        }
+      }
+
+      .page-title {
+        padding-top: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--color-text-heading);
+      }
+
+      .description {
+        padding-top: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--color-text-sanitized);
+      }
+    }
+
+      
+    @include mq(tablet) {
+      border-bottom-right-radius: 2000px 300px;
+      border-bottom-left-radius: 2000px 300px;
+      margin-left: -200px;
+      margin-right: -200px;
+      padding-left: 200px;
+      padding-right: 200px;
+      padding-bottom: 40px;
+
+      .header-content {
+        .site-title {
+          .icon {
+            width: 36px;
+            height: 36px;
+          }
+          .title {
+            font-size: 20px;
+          }
+        }
+
+        .page-title {
+          font-size: 24px;
+        }
+
+        .description {
+          padding-top: 16px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    @include mq(spc) {
+      padding-bottom: 32px;
+      .header-content {
+        padding: 32px;
+
+        .page-title {
+          padding-top: 64px;
+          font-size: 32px;
+        }
+
+        .description {
+          padding-top: 24px;
+          font-size: 18px;
+        }
+      }
+    }
+
+    @include mq(pc) {
+      border-bottom-right-radius: 3000px 300px;
+      border-bottom-left-radius: 3000px 300px;
+      padding-bottom: 48px;
+      .header-content {
+        padding: 32px;
+        .site-title {
+          .icon {
+            width: 40px;
+            height: 40px;
+          }
+          .title {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}

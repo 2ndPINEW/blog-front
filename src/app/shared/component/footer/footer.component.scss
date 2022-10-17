@@ -1,0 +1,39 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+
+  width: calc(100vw - 32px);
+
+  background-color: var(--color-surface);
+  border-radius: 16px;
+
+  padding: 16px;
+
+  color: var(--color-text-heading);
+
+  .sections {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 88px;
+      height: 88px;
+      margin-right: 8px;
+    }
+
+    .block {
+      display: flex;
+      flex-wrap: wrap;
+
+      .list-item {
+        padding-right: 8px;
+        width: fit-content;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: end;
+  }
+}
