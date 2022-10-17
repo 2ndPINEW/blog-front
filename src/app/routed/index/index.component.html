@@ -1,2 +1,4 @@
 <app-header [title]="'BLOG'" [description]="'日報とか学んだこととか'"></app-header>
 <p>welcome</p>
+
+<app-blog-card *ngFor="let blog of contents"></app-blog-card>

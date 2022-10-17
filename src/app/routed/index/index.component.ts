@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/shared/service/api.service';
+import { IndexApiService } from './service/index.api.service';
 
 @Component({
   selector: 'app-index',
@@ -8,18 +7,18 @@ import { ApiService } from 'src/app/shared/service/api.service';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  page = 1
+
+  contents!: any
 
   constructor(
-    private api: ApiService
+    private api: IndexApiService
   ) { }
 
   ngOnInit(): void {
-    this.getList().subscribe(v => {
-      console.log(v)
+    this.api.getList(this.page).subscribe(v => {
+      console.log(v.contents)
+      this.contents = v.contents
     })
-  }
-
-  getList (): Observable<any> {
-    return this.api.get('page-1.json')
   }
 }
