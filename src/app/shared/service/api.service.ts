@@ -70,7 +70,7 @@ export class ApiService {
                     }
                     return v
                 })
-            ) as unknown as T
+            ) as unknown as Observable<T>
     }
 
     post<T>(path: string, body: string, options?: ApiOptions) {
@@ -90,7 +90,7 @@ export class ApiService {
                     }
                     return v
                 })
-            ) as unknown as T
+            ) as unknown as Observable<T>
     }
 
     delete<T>(path: string, options?: ApiOptions) {
@@ -110,6 +110,6 @@ export class ApiService {
                     }
                     return v
                 })
-            ) as unknown as T
+            ) as unknown as Observable<T>
     }
 }
