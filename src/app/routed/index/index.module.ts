@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { IndexRoutingModule } from './index-routing.module';
 import { IndexComponent } from './index.component';
-import { HeaderModule } from 'src/app/shared/component/header/header.module';
+import { IndexApiService } from './service/index.api.service';
+import { AppCommonModule } from 'src/app/shared/component/app-common.module';
 
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
   ],
   imports: [
     CommonModule,
     IndexRoutingModule,
-    HeaderModule
+    AppCommonModule
+  ],
+  providers: [
+    IndexApiService
   ]
 })
 export class IndexModule { }
