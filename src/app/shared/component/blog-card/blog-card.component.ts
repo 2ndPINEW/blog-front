@@ -29,8 +29,4 @@ export class BlogCardComponent implements OnInit {
   resourceUrl (path: string): string {
     return `${environment.apiUrl}${path}`
   }
-
-  blogPageUrl (path: string): string {
-    return `/blog/${path}`
-  }
 }
