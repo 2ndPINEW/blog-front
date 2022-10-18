@@ -1,5 +1,11 @@
-<p>blog-card works!</p>
-<div>{{data.icon}}</div>
-<div>{{data.title}}</div>
-<div>{{data.description}}</div>
-<div>{{data.date}}</div>
+<a
+  class="container"
+  [routerLink]="blogPageUrl(data.path)"
+  [class.medium-layout]="mediumLayout"
+  [class.large-layout]="largeLayout"
+>
+  <img class="thumbnail" [src]="resourceUrl(data.icon)">
+  <div class="title">{{data.title}}</div>
+  <div class="description">{{data.description}}</div>
+  <div class="date">{{data.date}}</div>
+</a>

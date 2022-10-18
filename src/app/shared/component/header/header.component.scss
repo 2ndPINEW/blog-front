@@ -6,6 +6,10 @@
 
   overflow: hidden;
 
+  * {
+    transition: font-size 300ms, margin 300ms, padding 300ms, scale 300ms;
+  }
+
   .header-background {
     background-color: var(--color-surface);
 

@@ -1,0 +1,88 @@
+:host {
+  display: block;
+
+  background-color: var(--color-surface);
+  border-radius: 32px;
+
+  transition: background-color 300ms, border-radius 300ms;
+
+  &:hover {
+    border-radius: 16px;
+    background-color: var(--color-surface-hover);
+    cursor: pointer;
+  }
+
+  .container {
+    contain: layout inline-size;
+    padding: 16px;
+  
+    .thumbnail {
+      grid-area: thumb;
+    }
+    .title {
+      grid-area: title;
+      color: var(--color-text-heading);
+      font-weight: bold;
+      font-size: 16px;
+      align-self: center;
+    }
+    .description {
+      grid-area: desc;
+      color: var(--color-text-sanitized);
+      font-size: 12px;
+    }
+    .date {
+      grid-area: date;
+      color: var(--color-text-heading);
+      font-size: 12px;
+      justify-self: end;
+    }
+    display: grid;
+    grid-template:
+      "thumb ..... title title" 64px
+      "..... ..... ..... ....." 4px
+      "desc  desc  desc  desc" auto
+      "..... ..... ..... ....." 4px
+      "..... ..... ..... date" auto /
+      64px   8px  1fr   1fr;
+
+    &.medium-layout {
+      .title {
+        align-self: end;
+        font-size: 18px;
+      }
+      .description {
+        align-self: start;
+      }
+      grid-template:
+        "thumb ..... title title" 44px
+        "thumb ..... ..... ....." 8px
+        "thumb ..... desc desc" 36px
+        "..... ..... ..... ....." 4px
+        "..... ..... ..... date" auto /
+        88px   8px   1fr   1fr;
+    }
+
+    &.large-layout {
+      padding: 32px;
+      .title {
+        align-self: end;
+        font-size: 20px;
+      }
+      .description {
+        align-self: start;
+        font-size: 14px;
+      }
+      .date {
+        font-size: 14px;
+      }
+      grid-template:
+        "thumb ..... title title" 56px
+        "thumb ..... ..... ....." 16px
+        "thumb ..... desc desc" 56px
+        "..... ..... ..... ....." 4px
+        "..... ..... ..... date" auto /
+        128px   16px 1fr   1fr;
+    }
+  }
+}
