@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexApiService } from './service/index.api.service';
+import { IndexData } from './service/index.interface';
 
 @Component({
   selector: 'app-index',
@@ -9,7 +10,7 @@ import { IndexApiService } from './service/index.api.service';
 export class IndexComponent implements OnInit {
   page = 1
 
-  contents!: any
+  contents: IndexData[] = new Array(10)
 
   constructor(
     private api: IndexApiService
@@ -17,7 +18,6 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getList(this.page).subscribe(v => {
-      console.log(v.contents)
       this.contents = v.contents
     })
   }
