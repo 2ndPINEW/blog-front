@@ -29,21 +29,21 @@
       align-self: center;
       
       &.shimmer {
-        height: 19.2px;
+        height: 24px;
       }
     }
     .description {
       grid-area: desc;
       color: var(--color-text-sanitized);
       font-size: 12px;
-      height: 14.4px;
+      height: 18px;
     }
     .date {
       grid-area: date;
       color: var(--color-text-heading);
       font-size: 12px;
       justify-self: end;
-      height: 14.4px;
+      height: 18px;
 
       &.shimmer {
         width: 76px;
@@ -80,16 +80,16 @@
       .title {
         align-self: end;
         font-size: 20px;
-        height: 24px;
+        height: 30px;
       }
       .description {
         align-self: start;
         font-size: 14px;
-        height: 16.8px;
+        height: 21px;
       }
       .date {
         font-size: 14px;
-        height: 16.8px;
+        height: 21px;
         &.shimmer {
           width: 87px;
         }
