@@ -7,7 +7,7 @@
   overflow: hidden;
 
   * {
-    transition: font-size 300ms, margin 300ms, padding 300ms, scale 300ms;
+    transition: font-size var(--transition-time), margin var(--transition-time), padding var(--transition-time), scale var(--transition-time);
   }
 
   .header-background {

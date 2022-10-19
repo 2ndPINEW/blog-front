@@ -29,6 +29,10 @@
   /* ---------------------------- */
   --color-text-heading: #313131;
   --color-text-sanitized: #707070;
+
+
+
+  --transition-time: 200ms;
 }
 
 /* ダークモード用のカラースキーマ */

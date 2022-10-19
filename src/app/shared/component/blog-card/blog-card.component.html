@@ -3,9 +3,23 @@
   [routerLink]="['/blog', data.path]"
   [class.medium-layout]="mediumLayout"
   [class.large-layout]="largeLayout"
+  *ngIf="data; else skeleton"
 >
   <img class="thumbnail" [src]="resourceUrl(data.icon)">
   <div class="title">{{data.title}}</div>
   <div class="description">{{data.description}}</div>
   <div class="date">{{data.date}}</div>
 </a>
+
+<ng-template #skeleton>
+  <div
+    class="container"
+    [class.medium-layout]="mediumLayout"
+    [class.large-layout]="largeLayout"
+  >
+    <div class="thumbnail shimmer"></div>
+    <div class="title shimmer"></div>
+    <div class="description shimmer"></div>
+    <div class="date shimmer"></div>
+  </div>
+</ng-template>

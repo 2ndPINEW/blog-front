@@ -4,7 +4,7 @@
   background-color: var(--color-surface);
   border-radius: 32px;
 
-  transition: background-color 300ms, border-radius 300ms;
+  transition: background-color var(--transition-time), border-radius var(--transition-time);
 
   &:hover {
     border-radius: 16px;
@@ -18,6 +18,8 @@
   
     .thumbnail {
       grid-area: thumb;
+      width: 100%;
+      height: 100%;
     }
     .title {
       grid-area: title;
@@ -25,17 +27,27 @@
       font-weight: bold;
       font-size: 16px;
       align-self: center;
+      
+      &.shimmer {
+        height: 19.2px;
+      }
     }
     .description {
       grid-area: desc;
       color: var(--color-text-sanitized);
       font-size: 12px;
+      height: 14.4px;
     }
     .date {
       grid-area: date;
       color: var(--color-text-heading);
       font-size: 12px;
       justify-self: end;
+      height: 14.4px;
+
+      &.shimmer {
+        width: 76px;
+      }
     }
     display: grid;
     grid-template:
@@ -68,13 +80,19 @@
       .title {
         align-self: end;
         font-size: 20px;
+        height: 24px;
       }
       .description {
         align-self: start;
         font-size: 14px;
+        height: 16.8px;
       }
       .date {
         font-size: 14px;
+        height: 16.8px;
+        &.shimmer {
+          width: 87px;
+        }
       }
       grid-template:
         "thumb ..... title title" 56px

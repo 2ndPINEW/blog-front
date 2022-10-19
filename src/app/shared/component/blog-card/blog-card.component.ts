@@ -8,7 +8,7 @@ import { MediaQuery, ObserveResizeService } from 'angular-container-media-query'
   templateUrl: './blog-card.component.html',
   styleUrls: ['./blog-card.component.scss']
 })
-export class BlogCardComponent implements OnInit {
+export class BlogCardComponent {
   @Input()
   data!: IndexData
 
@@ -21,9 +21,6 @@ export class BlogCardComponent implements OnInit {
     changeDetector: ChangeDetectorRef
   ) {
     resize.register(this, elementRef, changeDetector);
-  }
-
-  ngOnInit(): void {
   }
 
   resourceUrl (path: string): string {
