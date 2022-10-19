@@ -48,17 +48,32 @@
       }
 
       .page-title {
-        padding-top: 40px;
+        margin-top: 40px;
         font-size: 20px;
         font-weight: bold;
         color: var(--color-text-heading);
+
+        &.shimmer {
+          height: 30px;
+          width: 80%;
+        }
       }
 
       .description {
-        padding-top: 12px;
+        margin-top: 12px;
         font-size: 12px;
         font-weight: bold;
         color: var(--color-text-sanitized);
+
+        &.shimmer {
+          height: 18px;
+          width: 50%;
+        }
+      }
+
+      .shimmer-center {
+        display: flex;
+        justify-content: center;
       }
     }
 
@@ -85,11 +100,21 @@
 
         .page-title {
           font-size: 24px;
+
+          &.shimmer {
+            height: 36px;
+            width: 50%;
+          }
         }
 
         .description {
-          padding-top: 16px;
+          margin-top: 16px;
           font-size: 14px;
+
+          &.shimmer {
+            height: 21px;
+            width: 40%;
+          }
         }
       }
     }
@@ -100,13 +125,23 @@
         padding: 32px;
 
         .page-title {
-          padding-top: 64px;
+          margin-top: 64px;
           font-size: 32px;
+
+          &.shimmer {
+            height: 48px;
+            width: 50%;
+          }
         }
 
         .description {
-          padding-top: 24px;
+          margin-top: 24px;
           font-size: 18px;
+
+          &.shimmer {
+            height: 27px;
+            width: 30%;
+          }
         }
       }
     }

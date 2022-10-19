@@ -1,8 +1,13 @@
-export interface BlogListData {
-  contents: IndexData[]
+export interface BlogPageData {
+  html: string,
+  metaData: MetaData
 }
 
-export interface IndexData {
+export interface BlogListData {
+  contents: MetaData[]
+}
+
+export interface MetaData {
   date: string
   description: string
   icon: string

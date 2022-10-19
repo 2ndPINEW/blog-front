@@ -1,1 +1,5 @@
-<p>blog works!</p>
+<app-header
+  [title]="metaData?.title"
+  [description]="metaData?.date"
+></app-header>
+<div [innerHtml]="html"></div>

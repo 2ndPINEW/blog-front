@@ -4,7 +4,14 @@
       <img class="icon" src="/assets/images/service/logo_light_s.png">
       <div class="title">pi</div>
     </a>
-    <div class="page-title flex-center">{{title}}</div>
-    <div class="description flex-center">{{description}}</div>
+    <div class="page-title flex-center" *ngIf="title">{{title}}</div>
+    <div class="shimmer-center">
+      <div class="page-title shimmer" *ngIf="!title"></div>
+    </div>
+
+    <div class="description flex-center" *ngIf="description">{{description}}</div>
+    <div class="shimmer-center">
+      <div class="description shimmer" *ngIf="!description"></div>
+    </div>
   </div>
 </div>

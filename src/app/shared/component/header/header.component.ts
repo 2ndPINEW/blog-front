@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() title!: string
-  @Input() description!: string
+  @Input() title: string | undefined
+  @Input() description: string | undefined
 }

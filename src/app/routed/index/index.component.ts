@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogApiService } from '../../shared/service/blog.api.service';
 import { IndexApiService } from './service/index.api.service';
-import { IndexData } from './service/index.interface';
+import { MetaData } from '../../shared/service/blog.interface'
 
 @Component({
   selector: 'app-index',
@@ -10,15 +11,20 @@ import { IndexData } from './service/index.interface';
 export class IndexComponent implements OnInit {
   page = 1
 
-  contents: IndexData[] = new Array(10)
+  contents: MetaData[] = new Array(10)
 
   constructor(
-    private api: IndexApiService
+    private api: IndexApiService,
+    private blogApi: BlogApiService
   ) { }
 
   ngOnInit(): void {
     this.api.getList(this.page).subscribe(v => {
       this.contents = v.contents
     })
+  }
+
+  prefetch (path: string): void {
+    this.blogApi.getBlogContent(path).subscribe(() => {})
   }
 }
