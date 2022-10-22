@@ -13,7 +13,7 @@ export class ChipComponent {
   link: string | undefined
 
   @Input()
-  selected: boolean = true
+  selected: boolean = false
 
   @Output()
   selectedChange = new EventEmitter<boolean>()

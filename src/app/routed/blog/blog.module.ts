@@ -5,12 +5,13 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { AppCommonModule } from 'src/app/shared/component/app-common.module';
 import { ArticleComponent } from './component/article/article.component';
-
+import { TagsComponent } from './component/tags/tags.component';
 
 @NgModule({
   declarations: [
     BlogComponent,
-    ArticleComponent
+    ArticleComponent,
+    TagsComponent
   ],
   imports: [
     CommonModule,

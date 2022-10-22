@@ -2,5 +2,5 @@
   [title]="data?.metaData?.title"
   [description]="data?.metaData?.date"
 ></app-header>
-<app-chip [label]="'Astro'" [link]="'hoge'"></app-chip>
+<app-tags [tags]="data?.metaData?.tags"></app-tags>
 <app-article [stringHtml]="data?.html"></app-article>

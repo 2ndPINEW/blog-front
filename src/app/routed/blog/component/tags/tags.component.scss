@@ -1,0 +1,23 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+
+  .line {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tag {
+      transition: margin var(--transition-time);
+      margin-right: 8px;
+
+      @include mq(tablet) {
+        margin-right: 10px;
+      }
+
+      @include mq(spc) {
+        margin-right: 12px;
+      }
+    }
+  }
+}

@@ -39,15 +39,30 @@
       border-radius: 8px;
     }
 
+    &.shimmer {
+      height: 26px;
+      width: 64px;
+    }
+
     @include mq(tablet) {
       border-radius: 30px;
       padding: 6px 10px;
+
+      &.shimmer {
+        height: 30px;
+        width: 72px;
+      }
     }
 
     @include mq(spc) {
       border-radius: 33px;
       padding: 6px 12px;
       font-size: 14px;
+
+      &.shimmer {
+        height: 33px;
+        width: 80px;
+      }
     }
   }
 }
