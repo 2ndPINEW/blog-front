@@ -12,6 +12,7 @@ export class IndexApiService {
   ) {}
 
   private memoryCache: { data: BlogListData, page: number }[] = []
+  private tagsCache: TagList | undefined
 
   getList (page: number): Observable<BlogListData> {
     const cache = this.memoryCache.find(cache => cache.page === page)
@@ -27,6 +28,13 @@ export class IndexApiService {
   }
 
   getTags (): Observable<TagList> {
-    return this.api.get<TagList>('tags.json')
+    if (this.tagsCache) {
+      return of(this.tagsCache)
+    }
+    return this.api.get<TagList>('tags.json').pipe(
+      tap(data => {
+        this.tagsCache = data
+      })
+    )
   }
 }

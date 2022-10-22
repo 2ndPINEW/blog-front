@@ -1,1 +1,17 @@
-<p>tags works!</p>
+<app-header
+  [title]="'Tags'"
+  [description]="description"
+></app-header>
+
+<div class="main-layout">
+  <div class="main-content">
+    <div class="working">工事中🚧</div>
+  </div>
+  <div class="right-content">
+    <div class="card">
+      <app-search
+      [tags]="tags"
+      ></app-search>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: '', loadChildren: () => import('./routed/index/index.module').then(m => m.IndexModule) }, { path: 'test', loadChildren: () => import('./routed/test/test.module').then(m => m.TestModule) }, { path: 'blog', loadChildren: () => import('./routed/blog/blog.module').then(m => m.BlogModule) }, { path: 'tags', loadChildren: () => import('./routed/tags/tags.module').then(m => m.TagsModule) }];
+const routes: Routes = [
+  { path: '', loadChildren: () => import('./routed/index/index.module').then(m => m.IndexModule) },
+  { path: 'blog', loadChildren: () => import('./routed/blog/blog.module').then(m => m.BlogModule) },
+  { path: 'tags', loadChildren: () => import('./routed/tags/tags.module').then(m => m.TagsModule) }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
