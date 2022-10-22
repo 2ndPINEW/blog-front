@@ -17,10 +17,12 @@
   /* チップカラー */
   /* ---------------------------- */
   --color-chip-surface: #ffffff;
-  --color-chip-surface-hover: #DCE2B3;
+  --color-chip-surface-fill: #DCE2B3;
+  --color-chip-surface-hover: #D3DE83;
   --color-chip-surface-selected: #939B51;
 
   --color-chip-text: #707070;
+  --color-chip-text-fill: #707070;
   --color-chip-text-hover: #707070;
   --color-chip-text-selected: #ffffff;
 
@@ -33,6 +35,8 @@
 
 
   --transition-time: 200ms;
+  --transition-time-half: 100ms;
+  --transition-time-quarter: 100ms;
 }
 
 /* ダークモード用のカラースキーマ */

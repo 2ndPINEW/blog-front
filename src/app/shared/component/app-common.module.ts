@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
 import { RouterModule } from '@angular/router';
+import { ChipComponent } from './chip/chip.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    BlogCardComponent
+    BlogCardComponent,
+    ChipComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     HeaderComponent,
-    BlogCardComponent
+    BlogCardComponent,
+    ChipComponent
   ]
 })
 export class AppCommonModule { }

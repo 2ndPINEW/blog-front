@@ -1,0 +1,53 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+
+  .chip {
+    display: block;
+    border-radius: 26px;
+    padding: 4px 8px;
+    font-size: 12px;
+
+    font-weight: bold;
+    width: fit-content;
+    background-color: var(--color-chip-surface);
+    color: var(--color-chip-text);
+
+    transition: 
+      background-color var(--transition-time),
+      color var(--transition-time),
+      font-size var(--transition-time),
+      padding var(--transition-time),
+      border-radius var(--transition-time);
+
+    &.link {
+      background-color: var(--color-chip-surface-fill);
+      color: var(--color-chip-text-fill);
+    }
+
+    &:hover {
+      background-color: var(--color-chip-surface-hover);
+      color: var(--color-chip-text-hover);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: var(--color-chip-surface-selected);
+      color: var(--color-chip-text-selected);
+      border-radius: 8px;
+    }
+
+    @include mq(tablet) {
+      border-radius: 30px;
+      padding: 6px 10px;
+    }
+
+    @include mq(spc) {
+      border-radius: 33px;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+}

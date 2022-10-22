@@ -1,0 +1,11 @@
+<div
+  *ngIf="!link"
+  class="chip"
+  [class.selected]="selected"
+>{{label}}</div>
+
+<a
+  *ngIf="link"
+  class="chip link"
+  [routerLink]="link"
+>{{label}}</a>
