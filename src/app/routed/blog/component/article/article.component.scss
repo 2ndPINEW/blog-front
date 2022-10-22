@@ -1,5 +1,27 @@
+@import "/src/css/global.scss";
+
 :host {
   display: block;
   padding-top: 64px;
   min-height: calc(100vh - 240px);
+  max-width: calc(100vw - 16px);
+
+  ::ng-deep * {
+    word-break: break-all;
+    border-radius: 16px;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 32px;
+      color: var(--color-text-heading)
+    }
+
+    p {
+      margin: 16px 0;
+      color: var(--color-text-sanitized)
+    }
+  }
+
+  @include mq(tablet) {
+    max-width: calc(100vw - 32px);
+  }
 }

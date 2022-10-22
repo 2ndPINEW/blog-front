@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, take, throttleTime } from 'rxjs';
+
 import { BlogPageData } from 'src/app/shared/service/blog.interface';
 import { BlogApiService } from '../../shared/service/blog.api.service';
 import { SectionContent, HtmlHeadLevel } from './service/blog.interface';

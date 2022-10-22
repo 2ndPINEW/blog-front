@@ -1,5 +1,7 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import hljs from 'highlight.js';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-article',
@@ -13,13 +15,18 @@ export class ArticleComponent implements OnChanges {
   html: SafeHtml | undefined
 
   constructor (
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private zone: NgZone
   ) {}
 
   ngOnChanges (changes: SimpleChanges): void {
     if (changes['stringHtml']) {
       const currentValue = changes['stringHtml'].currentValue
       this.html = this.sanitizer.bypassSecurityTrustHtml(currentValue)
+
+      this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
+        hljs.highlightAll()
+      })
     }
   }
 }
