@@ -9,7 +9,7 @@ import { AppCommonModule } from 'src/app/shared/component/app-common.module';
 
 @NgModule({
   declarations: [
-    IndexComponent,
+    IndexComponent
   ],
   imports: [
     CommonModule,

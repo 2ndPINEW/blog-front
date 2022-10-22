@@ -12,6 +12,7 @@ export class IndexComponent implements OnInit {
   page = 1
 
   contents: MetaData[] = new Array(10)
+  tags: string[] = new Array(3)
 
   constructor(
     private api: IndexApiService,
@@ -21,6 +22,9 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.api.getList(this.page).subscribe(v => {
       this.contents = v.contents
+    })
+    this.api.getTags().subscribe(v => {
+      this.tags = v.tags
     })
   }
 

@@ -15,3 +15,7 @@ export interface MetaData {
   title: string
   path: string
 }
+
+export interface TagList {
+  tags: string[]
+}

@@ -1,0 +1,12 @@
+:host {
+  display: block;
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tag {
+      margin: 8px;
+    }
+  }
+}

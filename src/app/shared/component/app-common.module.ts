@@ -4,12 +4,14 @@ import { HeaderComponent } from './header/header.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
 import { RouterModule } from '@angular/router';
 import { ChipComponent } from './chip/chip.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     BlogCardComponent,
-    ChipComponent
+    ChipComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { ChipComponent } from './chip/chip.component';
   exports: [
     HeaderComponent,
     BlogCardComponent,
-    ChipComponent
+    ChipComponent,
+    SearchComponent
   ]
 })
 export class AppCommonModule { }

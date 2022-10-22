@@ -3,37 +3,26 @@
 :host {
   display: block;
 
-  width: calc(100vw - 32px);
-
   background-color: var(--color-surface);
-  border-radius: 16px;
+  color: var(--color-text-heading);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 
   padding: 16px;
-
-  color: var(--color-text-heading);
 
   .sections {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .icon {
-      width: 88px;
-      height: 88px;
-      margin-right: 8px;
+      width: 48px;
+      height: 48px;
     }
 
-    .block {
-      display: flex;
-      flex-wrap: wrap;
-
-      .list-item {
-        padding-right: 8px;
-        width: fit-content;
-      }
+    .name {
+      font-size: 14px;
+      color: var(--color-text-sanitized);
     }
-  }
-
-  .copyright {
-    text-align: end;
   }
 }

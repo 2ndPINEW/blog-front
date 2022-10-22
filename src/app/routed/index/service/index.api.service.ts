@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "src/app/shared/service/api.service";
 import { Observable, of, tap } from "rxjs";
-import { BlogListData } from "src/app/shared/service/blog.interface";
+import { BlogListData, TagList } from "src/app/shared/service/blog.interface";
 
 @Injectable()
 export class IndexApiService {
@@ -22,5 +22,9 @@ export class IndexApiService {
         this.memoryCache.push({ page, data })
       })
     )
+  }
+
+  getTags (): Observable<TagList> {
+    return this.api.get<TagList>('tags.json')
   }
 }
