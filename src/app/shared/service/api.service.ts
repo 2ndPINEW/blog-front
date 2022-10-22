@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiError, isApiError } from './api.interface';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
 
 export interface ApiOptions {
 }
@@ -14,8 +13,7 @@ export interface ApiOptions {
 })
 export class ApiService {
   constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute
+    private http: HttpClient
   ) { }
 
   private httpOptions: any = {
@@ -31,7 +29,8 @@ export class ApiService {
     //
     // DELETE 実行時に `body` が必要になるケースがあるのでプロパティとして用意しておく
     // ( ここで用意しなくても追加できるけど... )
-    body: null
+    body: null,
+    withCredentials: true
   };
 
   /**
