@@ -1,5 +1,6 @@
 <app-header
-  [title]="metaData?.title"
-  [description]="metaData?.date"
+  [title]="data?.metaData?.title"
+  [description]="data?.metaData?.date"
 ></app-header>
-<div [innerHtml]="html"></div>
+<app-chip [label]="'Astro'" [link]="'hoge'"></app-chip>
+<app-article [stringHtml]="data?.html"></app-article>
