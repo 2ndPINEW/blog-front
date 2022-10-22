@@ -1,9 +1,10 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, take, throttleTime } from 'rxjs';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
 
-import { BlogPageData } from 'src/app/shared/service/blog.interface';
+import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
 import { BlogApiService } from '../../shared/service/blog.api.service';
+import { IndexApiService } from '../../shared/service/index.api.service';
 import { SectionContent, HtmlHeadLevel } from './service/blog.interface';
 
 @Component({
@@ -11,12 +12,14 @@ import { SectionContent, HtmlHeadLevel } from './service/blog.interface';
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private api: BlogApiService,
-    private zone: NgZone
+    private blogApi: BlogApiService,
+    private zone: NgZone,
+    private indexApi: IndexApiService,
+    private router: Router
   ) { }
 
   path = this.route.snapshot.paramMap.get('path')
@@ -25,19 +28,51 @@ export class BlogComponent implements OnInit {
   indexLevels: HtmlHeadLevel[] = [1, 2, 3]
   readingSection: SectionContent | undefined = undefined
 
+  recommends: MetaData[] = []
+
+  private subscription = new Subscription()
+
   ngOnInit(): void {
+    this.init()
+
+    this.subscription.add(
+      this.route.paramMap.subscribe(param => {
+        this.path = param.get('path')
+      })
+    )
+    this.subscription.add(
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.init()
+        }
+      })
+    )
+  }
+
+  ngOnDestroy (): void {
+    this.subscription.unsubscribe()
+  }
+
+  private init (): void {
     if (!this.path) {
       return
     }
-    this.api.getBlogContent(this.path).subscribe(data => {
+    this.blogApi.getBlogContent(this.path).subscribe(data => {
       this.data = data
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         this.makeSectionScrollPositionMap()
+      })
+      this.indexApi.getList(1).subscribe(data => {
+        this.recommends = [...data.contents].sort(() => (Math.random() < 0.5) ? -1 : 1).slice(-3)
       })
     })
     fromEvent(window, 'scroll').pipe(throunceTime(100)).subscribe(() => {
       this.onScroll()
     })
+  }
+
+  prefetch (path: string): void {
+    this.blogApi.getBlogContent(path).subscribe(() => {})
   }
 
   // Dom生成時にセクションごとの座標を保持しておく

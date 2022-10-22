@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { IndexRoutingModule } from './index-routing.module';
 import { IndexComponent } from './index.component';
-import { IndexApiService } from './service/index.api.service';
 import { AppCommonModule } from 'src/app/shared/component/app-common.module';
 
 
@@ -17,7 +16,6 @@ import { AppCommonModule } from 'src/app/shared/component/app-common.module';
     AppCommonModule
   ],
   providers: [
-    IndexApiService
   ]
 })
 export class IndexModule { }

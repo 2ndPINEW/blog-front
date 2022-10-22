@@ -2,4 +2,21 @@
 
 :host {
   display: block;
+
+  .recommends {
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--color-text-heading);
+      margin-top: 64px;
+      margin-bottom: 24px;
+    }
+    app-blog-card {
+      margin-bottom: 16px;
+
+      @include mq(tablet) {
+        margin-bottom: 24px;
+      }
+    }
+  }
 }

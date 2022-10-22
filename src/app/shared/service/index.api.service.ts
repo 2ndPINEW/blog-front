@@ -3,7 +3,9 @@ import { ApiService } from "src/app/shared/service/api.service";
 import { Observable, of, tap } from "rxjs";
 import { BlogListData, TagList } from "src/app/shared/service/blog.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class IndexApiService {
   constructor (
     private api: ApiService

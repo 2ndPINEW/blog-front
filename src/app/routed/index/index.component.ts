@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogApiService } from '../../shared/service/blog.api.service';
-import { IndexApiService } from './service/index.api.service';
+import { IndexApiService } from '../../shared/service/index.api.service';
 import { MetaData } from '../../shared/service/blog.interface'
 
 @Component({
