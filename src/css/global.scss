@@ -13,6 +13,14 @@
   .right-content {
     grid-area: right;
     display: none;
+
+    .card {
+      position: sticky;
+      top: 32px;
+      background-color: var(--color-surface);
+      border-radius: 32px;
+      padding: 32px;
+    }
   }
 
   grid-template: 
@@ -27,7 +35,7 @@
        1fr;
   }
 
-  @include mq(spc) {
+  @include mq(pc) {
     padding: 64px 32px;
     width: fit-content;
 

@@ -15,6 +15,13 @@
     ></app-article>
   </div>
   <div class="right-content">
-
+    <div class="card">
+      <app-toc
+        [stringHtml]="data?.html"
+        [indexLevels]="indexLevels"
+        [readingSection]="readingSection"
+        (clickSection)="scrollIntoView($event)"
+      ></app-toc>
+    </div>
   </div>
 </div>

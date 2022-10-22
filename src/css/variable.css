@@ -31,6 +31,13 @@
   /* ---------------------------- */
   --color-text-heading: #313131;
   --color-text-sanitized: #707070;
+  --color-text-toc: #171717;
+
+  /* ---------------------------- */
+  /* プログレスバー */
+  /* ---------------------------- */
+  --color-surface-progress-bar: #939B51;
+  --color-background-progress-bar: #ffffff;
 
 
 
