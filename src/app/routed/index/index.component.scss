@@ -1,10 +1,9 @@
+@import "/src/css/global.scss";
+
 :host {
   display: block;
-  p {
-    color: var(--color-text-heading);
-  }
 
   app-blog-card {
-    margin: 16px;
+    margin-bottom: 16px;
   }
 }

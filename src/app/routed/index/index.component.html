@@ -1,7 +1,17 @@
-<app-header [title]="'BLOG'" [description]="'日報とか学んだこととか'"></app-header>
+<app-header
+  [title]="'BLOG'"
+  [description]="'日報とか学んだこととか'"
+></app-header>
 
-<app-blog-card
-  [data]="content"
-  *ngFor="let content of contents"
-  (mouseenter)="prefetch(content.path)"
-></app-blog-card>
+<div class="main-layout">
+  <div class="main-content">
+    <app-blog-card
+      [data]="content"
+      *ngFor="let content of contents"
+      (mouseenter)="prefetch(content.path)"
+    ></app-blog-card>
+  </div>
+  <div class="right-content">
+
+  </div>
+</div>

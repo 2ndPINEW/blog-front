@@ -1,1 +1,42 @@
 @import "./query.scss";
+
+.main-layout {
+  display: grid;
+  margin: auto;
+  padding: 32px 8px;
+  gap: 64px;
+
+  .main-content {
+    grid-area: main;
+  }
+
+  .right-content {
+    grid-area: right;
+    display: none;
+  }
+
+  grid-template: 
+    "main" auto / 
+     1fr;
+
+  @include mq(tablet) {
+    padding: 48px 16px;
+  
+    grid-template: 
+      "main" auto / 
+       1fr;
+  }
+
+  @include mq(spc) {
+    padding: 64px 32px;
+    width: fit-content;
+
+    .right-content {
+      display: block;
+    }
+  
+    grid-template: 
+      "main right" auto / 
+       minmax(auto, 1024px) 400px;
+  }
+}

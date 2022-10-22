@@ -2,5 +2,19 @@
   [title]="data?.metaData?.title"
   [description]="data?.metaData?.date"
 ></app-header>
-<app-tags [tags]="data?.metaData?.tags"></app-tags>
-<app-article [stringHtml]="data?.html"></app-article>
+
+<div class="main-layout">
+  <div class="main-content">
+    <app-tags
+      [tags]="data?.metaData?.tags"
+      class="tags"
+    ></app-tags>
+    <app-article
+      [stringHtml]="data?.html"
+      class="article"
+    ></app-article>
+  </div>
+  <div class="right-content">
+
+  </div>
+</div>
