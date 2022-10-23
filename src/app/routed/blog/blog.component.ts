@@ -74,7 +74,11 @@ export class BlogComponent implements OnInit, OnDestroy {
         this.makeSectionScrollPositionMap()
       })
       this.indexApi.getList(1).subscribe(data => {
-        this.recommends = [...data.contents].sort(() => (Math.random() < 0.5) ? -1 : 1).slice(-3)
+        this.recommends =
+          [...data.contents]
+            .sort(() => (Math.random() < 0.5) ? -1 : 1)
+            .filter(content => content.path !== this.path)
+            .slice(-3)
       })
     })
   }
