@@ -6,10 +6,12 @@
   [class.selected]="selected"
   [class.shimmer]="!label"
   [routerLink]="routerLink"
+  (mouseover)="prefetch(label)"
 >{{label}}</a>
 
 <a
   *ngIf="link"
   class="chip link"
   [routerLink]="routerLink"
+  (mouseover)="prefetch(label)"
 >{{label}}</a>

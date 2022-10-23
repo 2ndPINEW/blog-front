@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { TagsApiService } from '../../service/tags.api.service';
 
 @Component({
   selector: 'app-chip',
@@ -20,7 +21,8 @@ export class ChipComponent {
   selectedChange = new EventEmitter<boolean>()
 
   constructor (
-    private router: Router
+    private router: Router,
+    private tagsApi: TagsApiService
   ) {}
 
   onClick (): void {
@@ -34,5 +36,9 @@ export class ChipComponent {
         ['/tags', this.label]
       )
     )    
+  }
+
+  prefetch (tagName: string): void {
+    this.tagsApi.getListFromTag(tagName).subscribe()
   }
 }
