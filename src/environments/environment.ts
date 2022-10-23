@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://blog-api.eito.workers.dev/'
+  apiUrl: '/api/'
 };
 
 /*
