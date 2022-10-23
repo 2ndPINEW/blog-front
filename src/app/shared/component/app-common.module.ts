@@ -5,10 +5,12 @@ import { BlogCardComponent } from './blog-card/blog-card.component';
 import { RouterModule } from '@angular/router';
 import { ChipComponent } from './chip/chip.component';
 import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    FooterComponent,
     BlogCardComponent,
     ChipComponent,
     SearchComponent
@@ -19,6 +21,7 @@ import { SearchComponent } from './search/search.component';
   ],
   exports: [
     HeaderComponent,
+    FooterComponent,
     BlogCardComponent,
     ChipComponent,
     SearchComponent
