@@ -19,6 +19,10 @@
       margin: 16px 0;
       color: var(--color-text-sanitized)
     }
+
+    img {
+      height: auto;
+    }
   }
 
   @include mq(tablet) {
