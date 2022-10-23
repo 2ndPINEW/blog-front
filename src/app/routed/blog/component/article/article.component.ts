@@ -27,6 +27,9 @@ export class ArticleComponent implements OnChanges {
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         hljs.highlightAll()
       })
+      window.setTimeout(() => {
+        hljs.highlightAll()
+      })
     }
   }
 }
