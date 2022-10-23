@@ -37,6 +37,9 @@
         .icon {
           width: 32px;
           height: 32px;
+
+          fill: var(--color-on-surface);
+          stroke: var(--color-on-surface);
         }
     
         .title {
