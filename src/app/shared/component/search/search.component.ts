@@ -11,4 +11,8 @@ export class SearchComponent {
 
   @Output()
   selectedTags: string[] = []
+
+  isSelected (tag: string): boolean {
+    return this.selectedTags.some(selectedTag => selectedTag === tag)
+  }
 }

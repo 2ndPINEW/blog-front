@@ -3,6 +3,7 @@
   <app-chip
     *ngFor="let tag of tags"
     [label]="tag"
+    [selected]="isSelected(tag)"
     class="tag"
   ></app-chip>
 </div>
