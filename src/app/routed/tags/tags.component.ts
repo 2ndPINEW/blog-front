@@ -46,7 +46,7 @@ export class TagsComponent implements OnInit {
   }
 
   private init (): void {
-    this.seo.update(`${this.selectedTag} の記事一覧`, `${this.selectedTag} のタグがついた記事一覧`)
+    this.seo.update(`${this.selectedTag} の記事一覧`, `${this.selectedTag} のタグがついた記事一覧`, this.selectedTag)
     this.indexApi.getTags().subscribe(data => {
       this.tags = data.tags
     })

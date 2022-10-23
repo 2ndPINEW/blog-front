@@ -23,7 +23,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.seo.update('ブログ', '日報とか学んだこととかメモするブログ')
+    this.seo.update('ブログ', '日報とか学んだこととかメモするブログ', 'index')
 
     this.api.getList(this.page).subscribe(v => {
       this.contents = v.contents
