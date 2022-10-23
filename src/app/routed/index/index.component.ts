@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BlogApiService } from '../../shared/service/blog.api.service';
 import { IndexApiService } from '../../shared/service/index.api.service';
 import { MetaData } from '../../shared/service/blog.interface'
 import { SeoService } from 'src/app/shared/service/seo.service';
+import { TagsApiService } from 'src/app/shared/service/tags.api.service';
 
 @Component({
   selector: 'app-index',
@@ -11,14 +11,16 @@ import { SeoService } from 'src/app/shared/service/seo.service';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  page = 1
+  // 本来は1から、0はページングしない全部含んだリスト
+  // 記事が増えてきたら考える
+  page = 0
 
   contents: MetaData[] = new Array(10)
   tags: string[] = new Array(3)
 
   constructor(
     private api: IndexApiService,
-    private blogApi: BlogApiService,
+    private tagsApi: TagsApiService,
     private seo: SeoService
   ) { }
 
@@ -28,12 +30,8 @@ export class IndexComponent implements OnInit {
     this.api.getList(this.page).subscribe(v => {
       this.contents = v.contents
     })
-    this.api.getTags().subscribe(v => {
+    this.tagsApi.getTags().subscribe(v => {
       this.tags = v.tags
     })
-  }
-
-  prefetch (path: string): void {
-    this.blogApi.getBlogContent(path).subscribe(() => {})
   }
 }

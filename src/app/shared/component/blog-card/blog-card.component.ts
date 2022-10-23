@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angula
 import { environment  } from 'src/environments/environment';
 import { MediaQuery, ObserveResizeService } from 'angular-container-media-query'
 import { MetaData } from '../../service/blog.interface';
+import { BlogApiService } from '../../service/blog.api.service';
 
 @Component({
   selector: 'app-blog-card',
@@ -18,12 +19,17 @@ export class BlogCardComponent {
   constructor(
     resize: ObserveResizeService,
     elementRef: ElementRef,
-    changeDetector: ChangeDetectorRef
+    changeDetector: ChangeDetectorRef,
+    private blogApi: BlogApiService
   ) {
     resize.register(this, elementRef, changeDetector);
   }
 
   resourceUrl (path: string): string {
     return `${environment.apiUrl}${path}`
+  }
+
+  prefetch (path: string): void {
+    this.blogApi.getBlogContent(path).subscribe()
   }
 }

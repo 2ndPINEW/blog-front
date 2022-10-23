@@ -83,10 +83,6 @@ export class BlogComponent implements OnInit, OnDestroy {
     })
   }
 
-  prefetch (path: string): void {
-    this.blogApi.getBlogContent(path).subscribe(() => {})
-  }
-
   // Dom生成時にセクションごとの座標を保持しておく
   private sectionPositionMap: SectionPositionMap[]  = []
 

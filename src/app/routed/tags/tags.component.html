@@ -5,7 +5,10 @@
 
 <div class="main-layout">
   <div class="main-content">
-    <div class="working">工事中🚧</div>
+    <app-blog-card
+      [data]="content"
+      *ngFor="let content of contents"
+    ></app-blog-card>
   </div>
   <div class="right-content">
     <div class="card">

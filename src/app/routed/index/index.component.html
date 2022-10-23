@@ -8,7 +8,6 @@
     <app-blog-card
       [data]="content"
       *ngFor="let content of contents"
-      (mouseenter)="prefetch(content.path)"
     ></app-blog-card>
   </div>
   <div class="right-content">

@@ -11,12 +11,5 @@
       margin-top: 64px;
       margin-bottom: 24px;
     }
-    app-blog-card {
-      margin-bottom: 16px;
-
-      @include mq(tablet) {
-        margin-bottom: 24px;
-      }
-    }
   }
 }

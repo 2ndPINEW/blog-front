@@ -4,6 +4,7 @@
   [class.medium-layout]="mediumLayout"
   [class.large-layout]="largeLayout"
   *ngIf="data; else skeleton"
+  (mouseover)="prefetch(data.path)"
 >
   <img class="thumbnail" [src]="resourceUrl(data.icon)" alt="">
   <div class="title">{{data.title}}</div>

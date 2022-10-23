@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "src/app/shared/service/api.service";
 import { Observable, of, tap } from "rxjs";
-import { BlogListData, TagList } from "src/app/shared/service/blog.interface";
+import { BlogListData } from "src/app/shared/service/blog.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ export class IndexApiService {
   ) {}
 
   private memoryCache: { data: BlogListData, page: number }[] = []
-  private tagsCache: TagList | undefined
 
   getList (page: number): Observable<BlogListData> {
     const cache = this.memoryCache.find(cache => cache.page === page)
@@ -23,17 +22,6 @@ export class IndexApiService {
     return this.api.get<BlogListData>(`page-${page}.json`).pipe(
       tap(data => {
         this.memoryCache.push({ page, data })
-      })
-    )
-  }
-
-  getTags (): Observable<TagList> {
-    if (this.tagsCache) {
-      return of(this.tagsCache)
-    }
-    return this.api.get<TagList>('tags.json').pipe(
-      tap(data => {
-        this.tagsCache = data
       })
     )
   }
