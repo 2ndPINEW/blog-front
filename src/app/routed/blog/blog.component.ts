@@ -62,13 +62,13 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   private init (): void {
     if (!this.path) {
-      this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません', '404')
+      this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません')
       return
     }
     this.blogApi.getBlogContent(this.path).subscribe(data => {
       this.data = data
       if (data?.metaData?.title && data?.metaData?.description && this.path) {
-        this.seo.update(data?.metaData?.title, data?.metaData?.description, this.path)
+        this.seo.update(data?.metaData?.title, data?.metaData?.description)
       }
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         this.makeSectionScrollPositionMap()
