@@ -1,10 +1,9 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
-import { Title } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
+import { SeoService } from 'src/app/shared/service/seo.service';
 import { BlogApiService } from '../../shared/service/blog.api.service';
 import { IndexApiService } from '../../shared/service/index.api.service';
 import { SectionContent, HtmlHeadLevel } from './service/blog.interface';
@@ -22,7 +21,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     private zone: NgZone,
     private indexApi: IndexApiService,
     private router: Router,
-    private title: Title
+    private seo: SeoService
   ) { }
 
   path = this.route.snapshot.paramMap.get('path')
@@ -63,13 +62,13 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   private init (): void {
     if (!this.path) {
-      this.title.setTitle('お探しの記事が見つかりません')
+      this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません')
       return
     }
     this.blogApi.getBlogContent(this.path).subscribe(data => {
       this.data = data
-      if (data?.metaData?.title) {
-        this.title.setTitle(`${data?.metaData?.title} - ${environment.siteTitle}`)
+      if (data?.metaData?.title && data?.metaData?.description) {
+        this.seo.update(data?.metaData?.title, data?.metaData?.description)
       }
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         this.makeSectionScrollPositionMap()

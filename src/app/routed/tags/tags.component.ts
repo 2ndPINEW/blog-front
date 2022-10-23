@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Title } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 
 import { IndexApiService } from 'src/app/shared/service/index.api.service';
+import { SeoService } from 'src/app/shared/service/seo.service';
 
 @Component({
   selector: 'app-tags',
@@ -22,7 +21,7 @@ export class TagsComponent implements OnInit {
     private indexApi: IndexApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private title: Title
+    private seo: SeoService
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +46,7 @@ export class TagsComponent implements OnInit {
   }
 
   private init (): void {
-    this.title.setTitle(`${this.selectedTag} の記事一覧 - ${environment.siteTitle}`)
+    this.seo.update(`${this.selectedTag} の記事一覧`, `${this.selectedTag} のタグがついた記事一覧`)
     this.indexApi.getTags().subscribe(data => {
       this.tags = data.tags
     })

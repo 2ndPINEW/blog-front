@@ -5,7 +5,7 @@
   [class.large-layout]="largeLayout"
   *ngIf="data; else skeleton"
 >
-  <img class="thumbnail" [src]="resourceUrl(data.icon)">
+  <img class="thumbnail" [src]="resourceUrl(data.icon)" alt="">
   <div class="title">{{data.title}}</div>
   <div class="description">{{data.description}}</div>
   <div class="date">{{data.date}}</div>
