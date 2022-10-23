@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BlogListData, TagList } from './blog.interface';
 
-export interface ApiOptions {
-}
 
 @Injectable({
   providedIn: 'root'
