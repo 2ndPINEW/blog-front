@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+
 import { IndexApiService } from 'src/app/shared/service/index.api.service';
 
 @Component({
@@ -18,7 +21,8 @@ export class TagsComponent implements OnInit {
   constructor(
     private indexApi: IndexApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +47,7 @@ export class TagsComponent implements OnInit {
   }
 
   private init (): void {
+    this.title.setTitle(`${this.selectedTag} の記事一覧 - ${environment.siteTitle}`)
     this.indexApi.getTags().subscribe(data => {
       this.tags = data.tags
     })

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+
 import { BlogApiService } from '../../shared/service/blog.api.service';
 import { IndexApiService } from '../../shared/service/index.api.service';
 import { MetaData } from '../../shared/service/blog.interface'
@@ -16,10 +19,12 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private api: IndexApiService,
-    private blogApi: BlogApiService
+    private blogApi: BlogApiService,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle(environment.siteTitle)
     this.api.getList(this.page).subscribe(v => {
       this.contents = v.contents
     })

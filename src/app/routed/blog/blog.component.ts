@@ -1,6 +1,8 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
 import { BlogApiService } from '../../shared/service/blog.api.service';
@@ -19,7 +21,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     private blogApi: BlogApiService,
     private zone: NgZone,
     private indexApi: IndexApiService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
   path = this.route.snapshot.paramMap.get('path')
@@ -47,6 +50,11 @@ export class BlogComponent implements OnInit, OnDestroy {
         }
       })
     )
+    this.subscription.add(
+      fromEvent(window, 'scroll').pipe(throunceTime(100)).subscribe(() => {
+        this.onScroll()
+      })
+    )
   }
 
   ngOnDestroy (): void {
@@ -55,19 +63,20 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   private init (): void {
     if (!this.path) {
+      this.title.setTitle('お探しの記事が見つかりません')
       return
     }
     this.blogApi.getBlogContent(this.path).subscribe(data => {
       this.data = data
+      if (data?.metaData?.title) {
+        this.title.setTitle(`${data?.metaData?.title} - ${environment.siteTitle}`)
+      }
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         this.makeSectionScrollPositionMap()
       })
       this.indexApi.getList(1).subscribe(data => {
         this.recommends = [...data.contents].sort(() => (Math.random() < 0.5) ? -1 : 1).slice(-3)
       })
-    })
-    fromEvent(window, 'scroll').pipe(throunceTime(100)).subscribe(() => {
-      this.onScroll()
     })
   }
 
