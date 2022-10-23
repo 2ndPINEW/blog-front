@@ -3,8 +3,8 @@
 :host {
   display: block;
 
-  background-color: var(--color-surface);
-  color: var(--color-text-heading);
+  background-color: var(--color-footer);
+  color: var(--color-footer-text-heading);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 
@@ -22,7 +22,7 @@
 
     .name {
       font-size: 14px;
-      color: var(--color-text-sanitized);
+      color: var(--color-footer-text-sanitized);
     }
   }
 }

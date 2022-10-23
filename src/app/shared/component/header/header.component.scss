@@ -11,7 +11,7 @@
   }
 
   .header-background {
-    background-color: var(--color-surface);
+    background-color: var(--color-header);
 
     border-bottom-right-radius: 1000px 200px;
     border-bottom-left-radius: 1000px 200px;
@@ -38,15 +38,15 @@
           width: 32px;
           height: 32px;
 
-          fill: var(--color-on-surface);
-          stroke: var(--color-on-surface);
+          fill: var(--color-on-header);
+          stroke: var(--color-on-header);
         }
     
         .title {
           margin-left: 8px;
           font-size: 18px;
           font-weight: bold;
-          color: var(--color-on-surface);
+          color: var(--color-on-header);
         }
       }
 
@@ -54,7 +54,7 @@
         margin-top: 40px;
         font-size: 20px;
         font-weight: bold;
-        color: var(--color-text-heading);
+        color: var(--color-header-text-heading);
         text-align: center;
 
         &.shimmer {
@@ -67,7 +67,7 @@
         margin-top: 12px;
         font-size: 12px;
         font-weight: bold;
-        color: var(--color-text-sanitized);
+        color: var(--color-header-text-sanitized);
 
         &.shimmer {
           height: 18px;

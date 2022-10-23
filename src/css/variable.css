@@ -6,12 +6,30 @@
   --color-background: #ffffff;
 
   /* ---------------------------- */
-  /* 表面カラー */
+  /* ヘッダーカラー */
   /* ---------------------------- */
-  --color-surface: #E3E4DB;
-  --color-on-surface: #707070;
+  --color-header: #E3E4DB;
+  --color-on-header: #707070;
+  --color-header-text-heading: #707070;
+  --color-header-text-sanitized: #707070;
 
-  --color-surface-hover: #DCE2B3;
+  /* ---------------------------- */
+  /* フッターカラー */
+  /* ---------------------------- */
+  --color-footer: #E3E4DB;
+  --color-on-footer: #707070;
+  --color-footer-text-heading: #707070;
+  --color-footer-text-sanitized: #707070;
+
+
+  /* ---------------------------- */
+  /* カードカラー */
+  /* ---------------------------- */
+  --color-card-surface: #E3E4DB;
+  --color-card-text-heading: #707070;
+  --color-card-text-sanitized: #707070;
+  --color-card-surface-hover: #DCE2B3;
+
 
   /* ---------------------------- */
   /* チップカラー */
@@ -39,12 +57,87 @@
   --color-surface-progress-bar: #939B51;
   --color-background-progress-bar: #ffffff;
 
+  /* ---------------------------- */
+  /* スケルトン */
+  /* ---------------------------- */
+  --color-skeleton: #ececec;
+  --color-skeleton-line: #f5f5f5;
 
 
   --transition-time: 200ms;
   --transition-time-half: 100ms;
   --transition-time-quarter: 100ms;
 }
+
+.halloween {
+  /* ---------------------------- */
+  /* 背景(ボディー)カラー */
+  /* ---------------------------- */
+  --color-background: #4A1101;
+
+  /* ---------------------------- */
+  /* ヘッダーカラー */
+  /* ---------------------------- */
+  --color-header: #FFA003;
+  --color-on-header: #270742;
+  --color-header-text-heading: #270742;
+  --color-header-text-sanitized: #270742;
+
+  /* ---------------------------- */
+  /* フッターカラー */
+  /* ---------------------------- */
+  --color-footer: #FFA003;
+  --color-on-footer: #270742;
+  --color-footer-text-heading: #270742;
+  --color-footer-text-sanitized: #270742;
+
+
+  /* ---------------------------- */
+  /* カードカラー */
+  /* ---------------------------- */
+  --color-card-surface: #DE4108;
+  --color-card-text-heading: #ffffff;
+  --color-card-text-sanitized: #d5d5d5;
+  --color-card-surface-hover: #e93904;
+
+  /* ---------------------------- */
+  /* チップカラー */
+  /* ---------------------------- */
+  --color-chip-surface: #6a4d82;
+  --color-chip-surface-fill: #471e69;
+  --color-chip-surface-hover: #471e69;
+  --color-chip-surface-selected: #270742;
+
+  --color-chip-text: #ffffff;
+  --color-chip-text-fill: #ffffff;
+  --color-chip-text-hover: #ffffff;
+  --color-chip-text-selected: #ffffff;
+
+  /* ---------------------------- */
+  /* テキストカラー */
+  /* ---------------------------- */
+  --color-text-heading: #FFFFFF;
+  --color-text-sanitized: #FFFFFF;
+  --color-text-toc: #FFFFFF;
+
+  /* ---------------------------- */
+  /* プログレスバー */
+  /* ---------------------------- */
+  --color-surface-progress-bar: #471e69;
+  --color-background-progress-bar: #ffffff;
+
+
+  /* ---------------------------- */
+  /* スケルトン */
+  /* ---------------------------- */
+  --color-skeleton: #E6998A;
+  --color-skeleton-line: #DE4108;
+
+  --transition-time: 200ms;
+  --transition-time-half: 100ms;
+  --transition-time-quarter: 100ms;
+}
+
 
 /* ダークモード用のカラースキーマ */
 /* @media (prefers-color-scheme: dark) {

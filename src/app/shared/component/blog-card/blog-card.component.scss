@@ -3,7 +3,7 @@
 :host {
   display: block;
 
-  background-color: var(--color-surface);
+  background-color: var(--color-card-surface);
   border-radius: 32px;
 
   transition: background-color var(--transition-time), border-radius var(--transition-time);
@@ -16,7 +16,7 @@
 
   &:hover {
     border-radius: 16px;
-    background-color: var(--color-surface-hover);
+    background-color: var(--color-card-surface-hover);
     cursor: pointer;
   }
 
@@ -31,7 +31,7 @@
     }
     .title {
       grid-area: title;
-      color: var(--color-text-heading);
+      color: var(--color-card-text-heading);
       font-weight: bold;
       font-size: 16px;
       align-self: center;
@@ -46,7 +46,7 @@
     }
     .description {
       grid-area: desc;
-      color: var(--color-text-sanitized);
+      color: var(--color-card-text-sanitized);
       font-size: 12px;
       height: 18px;
 
@@ -56,7 +56,7 @@
     }
     .date {
       grid-area: date;
-      color: var(--color-text-heading);
+      color: var(--color-card-text-heading);
       font-size: 12px;
       justify-self: end;
       height: 18px;
