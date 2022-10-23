@@ -29,8 +29,7 @@ export class ApiService {
     //
     // DELETE 実行時に `body` が必要になるケースがあるのでプロパティとして用意しておく
     // ( ここで用意しなくても追加できるけど... )
-    body: null,
-    withCredentials: true
+    body: null
   };
 
   /**
