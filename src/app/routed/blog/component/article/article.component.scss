@@ -2,8 +2,19 @@
 
 :host {
   display: block;
-  padding-top: 64px;
+  margin-top: 32px;
   max-width: calc(100vw - 16px);
+
+  transition: margin-top var(--transition-time);
+
+  @include mq(tablet) {
+    margin-top: 48px;
+    max-width: calc(100vw - 32px);
+  }
+
+  @include mq(spc) {
+    margin-top: 64px;
+  }
 
   ::ng-deep * {
     word-break: break-all;
@@ -23,9 +34,5 @@
     img {
       height: auto;
     }
-  }
-
-  @include mq(tablet) {
-    max-width: calc(100vw - 32px);
   }
 }

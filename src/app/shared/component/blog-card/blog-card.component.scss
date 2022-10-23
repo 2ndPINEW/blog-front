@@ -35,7 +35,11 @@
       font-weight: bold;
       font-size: 16px;
       align-self: center;
-      
+
+      overflow: unset;
+      white-space: unset;
+      text-overflow: ellipsis;
+
       &.shimmer {
         height: 24px;
       }
@@ -45,6 +49,10 @@
       color: var(--color-text-sanitized);
       font-size: 12px;
       height: 18px;
+
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .date {
       grid-area: date;
@@ -70,9 +78,17 @@
       .title {
         align-self: end;
         font-size: 18px;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       .description {
         align-self: start;
+
+        overflow: unset;
+        white-space: unset;
+        text-overflow: ellipsis;
       }
       grid-template:
         "thumb ..... title title" 44px
@@ -89,11 +105,19 @@
         align-self: end;
         font-size: 20px;
         height: 30px;
+
+        overflow: unset;
+        white-space: unset;
+        text-overflow: ellipsis;
       }
       .description {
         align-self: start;
         font-size: 14px;
         height: 21px;
+
+        overflow: unset;
+        white-space: unset;
+        text-overflow: ellipsis;
       }
       .date {
         font-size: 14px;
