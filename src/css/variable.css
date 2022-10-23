@@ -63,6 +63,12 @@
   --color-skeleton: #ececec;
   --color-skeleton-line: #f5f5f5;
 
+  /* ---------------------------- */
+  /* リンク */
+  /* ---------------------------- */
+  --color-link: #5dba00;
+  --color-link-hover: #D3DE83;
+
 
   --transition-time: 200ms;
   --transition-time-half: 100ms;
@@ -132,6 +138,12 @@
   /* ---------------------------- */
   --color-skeleton: #E6998A;
   --color-skeleton-line: #DE4108;
+
+  /* ---------------------------- */
+  /* リンク */
+  /* ---------------------------- */
+  --color-link: #17b819;
+  --color-link-hover: #04ae07;
 
   --transition-time: 200ms;
   --transition-time-half: 100ms;

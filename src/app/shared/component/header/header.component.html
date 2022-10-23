@@ -1,6 +1,6 @@
 <div class="header-background">
   <div class="header-content">
-    <a routerLink="/" class="site-title">
+    <a routerLink="/" class="site-title" *ngIf="theme === 'none'">
       <!-- SVGスプライトにしたほうがいい -->
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
         <defs>
@@ -29,6 +29,9 @@
         </g>
       </svg>
       <div class="title">pi</div>
+    </a>
+    <a routerLink="/" class="site-title" *ngIf="theme === 'halloween'">
+      <img class="themed-logo" src="/assets/images/halloween/halloween_text_e.png" width="600" height="146" alt="ハッピーハロウィン">
     </a>
     <div class="page-title flex-center" *ngIf="title">{{title}}</div>
     <div class="shimmer-center">

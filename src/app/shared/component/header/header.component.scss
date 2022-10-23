@@ -41,6 +41,12 @@
           fill: var(--color-on-header);
           stroke: var(--color-on-header);
         }
+
+        .themed-logo {
+          margin-left: auto;
+          width: auto;
+          height: 32px;
+        }
     
         .title {
           margin-left: 8px;
@@ -95,6 +101,9 @@
         .site-title {
           .icon {
             width: 36px;
+            height: 36px;
+          }
+          .themed-logo {
             height: 36px;
           }
           .title {
@@ -159,6 +168,9 @@
         .site-title {
           .icon {
             width: 40px;
+            height: 40px;
+          }
+          .themed-logo {
             height: 40px;
           }
           .title {
