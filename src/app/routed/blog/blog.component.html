@@ -14,7 +14,7 @@
       class="article"
     ></app-article>
     <div class="recommends">
-      <div class="title">おすすめの記事</div>
+      <div *ngIf="recommends.length > 0" class="title">おすすめの記事</div>
       <app-blog-card
         [data]="recommend"
         *ngFor="let recommend of recommends"
