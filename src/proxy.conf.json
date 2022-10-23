@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://blog-bga.pages.dev",
+    "target": "https://blog-api.eito.workers.dev",
     "pathRewrite": {"^/api": ""},
     "secure": true,
     "changeOrigin": true,
