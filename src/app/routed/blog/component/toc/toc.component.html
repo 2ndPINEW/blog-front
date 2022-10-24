@@ -1,12 +1,26 @@
 <div class="title">目次</div>
 <div class="toc-layout">
+
+  <div class="complete-mark-area" *ngIf="complete" [class.show]="complete">
+    <img
+      class="complete-mark"
+      *ngIf="theme === 'none'"
+      src="/assets/images/service/logo_s.png"
+      alt="記事を読み終わったマーク"
+    >
+    <img
+      class="complete-mark"
+      *ngIf="theme === 'halloween'"
+      src="/assets/images/halloween/halloween_mark_majo.png"
+      alt="記事を読み終わったマーク"
+    >
+  </div>
   <div #progressArea class="progress-background">
     <div
       #progressLine
       class="progress-line"
       [style.height]="progressLineHeightPx"
     ></div>
-    <!-- <img class="complete-mark" *ngIf="complete && theme === 'halloween'" src="/assets/images/halloween/halloween_mark_castle.png"> -->
   </div>
   <div class="heads">
     <div
