@@ -1,4 +1,4 @@
-import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
 
@@ -14,6 +14,7 @@ import { SectionContent, HtmlHeadLevel } from './service/blog.interface';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit, OnDestroy {
+  @ViewChild('endOfArticle') endOfArticleElementRef!: ElementRef<HTMLDivElement>
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,8 @@ export class BlogComponent implements OnInit, OnDestroy {
   readingSection: SectionContent | undefined = undefined
 
   recommends: MetaData[] = []
+
+  complete: boolean = false
 
   private subscription = new Subscription()
 
@@ -104,7 +107,13 @@ export class BlogComponent implements OnInit, OnDestroy {
   // スクロールした時に、読んでいるセクションをセットする
   private onScroll (): void {
     const nowPosition = window.scrollY
-    const readingPosition = this.sectionPositionMap.find(v => v.position < nowPosition)
+    const readLineHeight = window.innerHeight * 0.3
+    if (this.endOfArticleElementRef.nativeElement.offsetTop - readLineHeight < nowPosition) {
+      this.complete = true
+    } else {
+      this.complete = false
+    }
+    const readingPosition = this.sectionPositionMap.find(v => v.position - readLineHeight < nowPosition)
     if (readingPosition) {
       this.readingSection = {
         level: readingPosition.level,

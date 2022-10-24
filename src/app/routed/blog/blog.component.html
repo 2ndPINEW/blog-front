@@ -13,6 +13,7 @@
       [stringHtml]="data?.html"
       class="article"
     ></app-article>
+    <div #endOfArticle></div>
     <div class="recommends">
       <div *ngIf="recommends.length > 0" class="title">おすすめの記事</div>
       <app-blog-card
@@ -27,7 +28,7 @@
         [stringHtml]="data?.html"
         [indexLevels]="indexLevels"
         [readingSection]="readingSection"
-        [complete]="false"
+        [complete]="complete"
         (clickSection)="scrollIntoView($event)"
       ></app-toc>
     </div>
