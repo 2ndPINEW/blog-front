@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { Theme, ThemeSwitchService } from 'src/app/shared/service/theme-switch.service';
 import { SectionContent, HtmlHeadLevel } from '../../service/blog.interface';
 
 @Component({
@@ -16,6 +17,9 @@ export class TocComponent {
   @Input()
   readingSection: SectionContent | undefined
 
+  @Input()
+  complete: boolean = false
+
   @Output()
   clickSection = new EventEmitter<SectionContent>()
 
@@ -27,6 +31,7 @@ export class TocComponent {
   @ViewChildren('toc') tocElementRef!: QueryList<ElementRef<HTMLDivElement>>
 
   constructor (
+    private themeService: ThemeSwitchService
   ) {}
 
   ngOnChanges (changes: SimpleChanges): void {
@@ -34,6 +39,10 @@ export class TocComponent {
       const currentValue = changes['stringHtml'].currentValue
       this.makeToc(currentValue)
     }
+
+    // if (changes['complete'] && changes['complete'].previousValue === false) {
+    //   // コンプリートした瞬間の処理
+    // }
   }
 
   onClick (section: SectionContent): void {
@@ -66,6 +75,10 @@ export class TocComponent {
       return 8
     }
 
+    if (this.complete) {
+      return this.progressAreaElementRef.nativeElement.clientHeight
+    }
+
     const parentOffset = this.progressAreaElementRef.nativeElement.offsetTop
     const readingHeadElement = this.tocElementRef.find(elementRef => elementRef.nativeElement.innerHTML === this.readingSection?.text)
     const top = readingHeadElement?.nativeElement.offsetTop
@@ -75,5 +88,9 @@ export class TocComponent {
     }
     const height = top - parentOffset + (clientHeight / 2)
     return height
+  }
+
+  get theme (): Theme {
+    return this.themeService.theme
   }
 }
