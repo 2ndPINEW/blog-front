@@ -20,7 +20,7 @@ export class ThemeSwitchService {
       document.body.classList.add('halloween')
     }
 
-    const isXmas = true //today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
+    const isXmas = today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
     if (isXmas) {
       this.theme = 'xmas'
       document.body.classList.add('xmas')
