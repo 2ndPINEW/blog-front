@@ -90,7 +90,7 @@ export class TocComponent {
     return height
   }
 
-  get theme (): Theme {
-    return this.themeService.theme
+  get completeMark (): string {
+    return this.themeService.tocCompleteMark
   }
 }

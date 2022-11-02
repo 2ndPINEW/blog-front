@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Theme, ThemeSwitchService } from '../../service/theme-switch.service';
+import { ThemeSwitchService } from '../../service/theme-switch.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,7 @@ export class HeaderComponent {
     private themeService: ThemeSwitchService
   ) {}
 
-  get theme (): Theme {
-    return this.themeService.theme
+  get themedIcon (): string | undefined {
+    return this.themeService.headerIcon
   }
 }

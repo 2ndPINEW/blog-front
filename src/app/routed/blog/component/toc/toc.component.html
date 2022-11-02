@@ -4,14 +4,7 @@
   <div class="complete-mark-area" *ngIf="complete" [class.show]="complete">
     <img
       class="complete-mark"
-      *ngIf="theme === 'none'"
-      src="/assets/images/service/logo_s.png"
-      alt="記事を読み終わったマーク"
-    >
-    <img
-      class="complete-mark"
-      *ngIf="theme === 'halloween'"
-      src="/assets/images/halloween/halloween_mark_majo.png"
+      [src]="completeMark"
       alt="記事を読み終わったマーク"
     >
   </div>
