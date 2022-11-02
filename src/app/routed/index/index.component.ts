@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
   page = 0
 
   contents: MetaData[] = new Array(10)
-  tags: string[] = new Array(3)
+  tags!: string[]
 
   constructor(
     private api: IndexApiService,

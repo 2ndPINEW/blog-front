@@ -12,7 +12,7 @@ import { TagsApiService } from 'src/app/shared/service/tags.api.service';
   styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent implements OnInit {
-  tags = new Array(3)
+  tags!: string[]
   
   private selectedTag: string = this.route.snapshot.paramMap.get('tag') ?? ''
 

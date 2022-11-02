@@ -6,8 +6,16 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
+  _tags: string[] | undefined = undefined
+
   @Input()
-  tags!: string[]
+  set tags (v: string[] | undefined) {
+    this._tags = v
+  }
+
+  get tags (): string[] {
+    return this._tags ?? new Array(10)
+  }
 
   @Output()
   selectedTags: string[] = []
