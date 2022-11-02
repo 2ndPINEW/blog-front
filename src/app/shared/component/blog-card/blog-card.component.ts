@@ -23,15 +23,11 @@ export class BlogCardComponent {
   constructor(
     resize: ObserveResizeService,
     elementRef: ElementRef,
-    private changeDetector: ChangeDetectorRef,
+    changeDetector: ChangeDetectorRef,
     private blogApi: BlogApiService,
     private themeService: ThemeSwitchService
   ) {
     resize.register(this, elementRef, changeDetector);
-  }
-
-  ngOnInit (): void {
-    this.changeDetector.detach()
   }
 
   resourceUrl (path: string): string {
