@@ -43,7 +43,7 @@ export class ThemeSwitchService {
   get blogCardThumbnail (): string | undefined {
     switch (this.theme) {
       case 'halloween':
-        return '/assets/images/halloween/halloween_mark_majo.png'
+        return '/assets/images/service/logo_s.png'
       case 'xmas':
         const index = Math.floor(Math.random() * 3) + 1
         return `/assets/images/xmas/icons/${index}.png`

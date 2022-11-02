@@ -159,7 +159,7 @@
   /* ---------------------------- */
   /* ヘッダーカラー */
   /* ---------------------------- */
-  --color-header: #D31A22;
+  --color-header: #cf1922;
   --color-on-header: #ffffff;
   --color-header-text-heading: #ffffff;
   --color-header-text-sanitized: #ffffff;
@@ -179,7 +179,7 @@
   --color-card-surface: #077D47;
   --color-card-text-heading: #ffffff;
   --color-card-text-sanitized: #d5d5d5;
-  --color-card-surface-hover: #CF231B;
+  --color-card-surface-hover: #cf1922;
 
   /* ---------------------------- */
   /* チップカラー */
