@@ -16,10 +16,7 @@
     background-color: var(--color-surface-mobile-toc-icon);
     border-radius: 32px;
     padding: 8px 12px;
-    opacity: 0;
     max-width: calc(100% - 16px);
-
-    transition: background-color var(--transition-time), border-radius var(--transition-time), opacity var(--transition-time);
 
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -39,10 +36,6 @@
       white-space: nowrap;
     }
 
-    &.show {
-      opacity: 1;
-    }
-  
     &:hover {
       border-radius: 16px;
       background-color: var(--color-surface-mobile-toc-icon);
