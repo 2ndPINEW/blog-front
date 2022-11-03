@@ -1,0 +1,47 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--color-text-heading);
+  }
+  .description {
+    color: var(--color-text-heading);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 64px;
+    background-color: var(--color-card-surface);
+    border-radius: 32px;
+    padding: 16px 32px;
+
+    .button {
+      background-color: var(--color-chip-surface);
+      color: var(--color-chip-text);
+      border-radius: 32px;
+      padding: 8px 16px;
+      margin: 8px 4px;
+      width: fit-content;
+
+      transition: 
+        background-color var(--transition-time),
+        color var(--transition-time),
+        font-size var(--transition-time),
+        padding var(--transition-time),
+        border-radius var(--transition-time);
+  
+      &:hover {
+        cursor: pointer;
+        border-radius: 16px;
+        background-color: var(--color-chip-surface-hover);
+        color: var(--color-chip-text-hover);
+      }
+    }
+  }
+}

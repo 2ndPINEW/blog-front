@@ -1,0 +1,28 @@
+<app-header
+  [title]="'Settings'"
+  [description]="'隠し設定機能'"
+></app-header>
+
+<div class="main-layout">
+  <div class="main-content">
+    <div class="title">ブログテーマ切り替え</div>
+    <div class="description">ブログのテーマを切り替えれますリロードするとリセットされます</div>
+    <div class="buttons">
+      <div
+        class="button"
+        *ngFor="let theme of themes"
+        (click)="switchTheme(theme.key)"
+      >{{theme.value}}</div>
+    </div>
+
+    <app-blog-card></app-blog-card>
+    <app-blog-card></app-blog-card>
+    <app-blog-card></app-blog-card>
+  </div>
+  <div class="right-content">
+    <div class="card">
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
