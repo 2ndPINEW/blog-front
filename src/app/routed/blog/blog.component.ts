@@ -65,6 +65,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   private init (): void {
     this.data = undefined
+    this.recommends = []
     if (!this.path) {
       this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません')
       return
