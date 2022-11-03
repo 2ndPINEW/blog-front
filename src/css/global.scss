@@ -45,9 +45,19 @@
     .right-content {
       display: block;
     }
+
+    .mobile-column-content {
+      display: none;
+    }
   
     grid-template: 
       "main right" auto / 
       minmax(0, 1024px) 400px;
+  }
+}
+
+@include mq(pc) {
+  .mobile-column-content {
+    display: none;
   }
 }
