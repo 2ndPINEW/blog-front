@@ -1,6 +1,7 @@
 import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
+import { isApiError } from 'src/app/shared/service/api.interface';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
 import { SeoService } from 'src/app/shared/service/seo.service';
@@ -71,6 +72,20 @@ export class BlogComponent implements OnInit, OnDestroy {
       return
     }
     this.blogApi.getBlogContent(this.path).subscribe(data => {
+      if (isApiError(data)) {
+        this.data = {
+          html: '',
+          metaData: {
+            date: data.error_message ?? 'エラーが発生しました',
+            description: '',
+            icon: '',
+            tags: [],
+            title: data.error_title ?? '通信エラー',
+            path: ''
+          }
+        }
+        return
+      }
       this.data = data
       if (data?.metaData?.title && data?.metaData?.description && this.path) {
         this.seo.update(data?.metaData?.title, data?.metaData?.description)
