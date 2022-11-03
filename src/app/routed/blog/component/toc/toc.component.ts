@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
-import { Theme, ThemeSwitchService } from 'src/app/shared/service/theme-switch.service';
+import { ThemeSwitchService } from 'src/app/shared/service/theme-switch.service';
 import { SectionContent, HtmlHeadLevel } from '../../service/blog.interface';
 
 @Component({

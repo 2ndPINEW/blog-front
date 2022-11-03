@@ -35,4 +35,13 @@
   </div>
 </div>
 
+<!-- スマホ向けTOC -->
+<app-mobile-toc
+  [stringHtml]="data?.html"
+  [indexLevels]="indexLevels"
+  [readingSection]="readingSection"
+  [complete]="complete"
+  (clickSection)="scrollIntoView($event)"
+></app-mobile-toc>
+
 <app-footer></app-footer>

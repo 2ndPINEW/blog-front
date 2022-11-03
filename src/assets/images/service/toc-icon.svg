@@ -1,0 +1,19 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+>
+  <g transform="translate(-20 -20)">
+    <g transform="translate(20 20)" fill="none" stroke-width="2">
+      <rect width="24" height="24" rx="8" stroke="none" />
+      <rect x="1" y="1" width="22" height="22" rx="7" fill="none" />
+    </g>
+    <circle cx="1" cy="1" r="1" transform="translate(26 31)" />
+    <rect width="8" height="2" transform="translate(30 31)" />
+    <circle cx="1" cy="1" r="1" transform="translate(26 35)" />
+    <rect width="8" height="2" transform="translate(30 35)" />
+    <circle cx="1" cy="1" r="1" transform="translate(26 27)" />
+    <rect width="8" height="2" transform="translate(30 27)" />
+  </g>
+</svg>

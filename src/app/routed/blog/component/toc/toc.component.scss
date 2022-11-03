@@ -58,6 +58,7 @@
       .head {
         color: var(--color-text-toc);
         cursor: pointer;
+        pointer-events: auto;
 
         // &.level-1 {
         //   font-size: 20px;

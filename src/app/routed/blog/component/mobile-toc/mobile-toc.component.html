@@ -1,0 +1,41 @@
+<div class="area"
+  [class.show]="!complete"
+  (click)="showToc()"
+>
+  <!-- TODO: SVGスプライトとか使う -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    class="icon"
+  >
+    <g transform="translate(-20 -20)">
+      <g transform="translate(20 20)" fill="none" stroke-width="2">
+        <rect width="24" height="24" rx="8" stroke="none" />
+        <rect x="1" y="1" width="22" height="22" rx="7" fill="none" />
+      </g>
+      <circle cx="1" cy="1" r="1" transform="translate(26 31)" />
+      <rect width="8" height="2" transform="translate(30 31)" />
+      <circle cx="1" cy="1" r="1" transform="translate(26 35)" />
+      <rect width="8" height="2" transform="translate(30 35)" />
+      <circle cx="1" cy="1" r="1" transform="translate(26 27)" />
+      <rect width="8" height="2" transform="translate(30 27)" />
+    </g>
+  </svg>
+  <div class="head">目次</div>
+</div>
+
+<div class="toc-card-wrapper">
+  <div class="toc-card" [class.show]="isShowToc">
+    <app-toc
+      [stringHtml]="stringHtml"
+      [indexLevels]="indexLevels"
+      [readingSection]="readingSection"
+      [complete]="complete"
+      (clickSection)="onClickSection($event)"
+    ></app-toc>
+  </div>
+</div>
+
+<div class="backdrop" [class.show]="isShowToc" (click)="hideToc()"></div>

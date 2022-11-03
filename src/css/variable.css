@@ -69,6 +69,17 @@
   --color-link: #5dba00;
   --color-link-hover: #D3DE83;
 
+  /* ---------------------------- */
+  /* モバイルのTOCアイコン */
+  /* ---------------------------- */
+  --color-surface-mobile-toc-icon: #939B51;
+  --color-mobile-toc-icon: #ffffff;
+
+  /* ---------------------------- */
+  /* 影 */
+  /* ---------------------------- */
+  --color-shadow-rgb: 0, 0, 0;
+
 
   --transition-time: 200ms;
   --transition-time-half: 100ms;
@@ -145,6 +156,17 @@
   --color-link: #17b819;
   --color-link-hover: #04ae07;
 
+  /* ---------------------------- */
+  /* モバイルのTOCアイコン */
+  /* ---------------------------- */
+  --color-surface-mobile-toc-icon: #DE4108;
+  --color-mobile-toc-icon: #ffffff;
+
+  /* ---------------------------- */
+  /* 影 */
+  /* ---------------------------- */
+  --color-shadow-rgb: 0, 0, 0;
+
   --transition-time: 200ms;
   --transition-time-half: 100ms;
   --transition-time-quarter: 100ms;
@@ -219,6 +241,17 @@
   /* ---------------------------- */
   --color-link: #f5271c;
   --color-link-hover: #f5271c;
+
+  /* ---------------------------- */
+  /* モバイルのTOCアイコン */
+  /* ---------------------------- */
+  --color-surface-mobile-toc-icon: #077D47;
+  --color-mobile-toc-icon: #ffffff;
+
+  /* ---------------------------- */
+  /* 影 */
+  /* ---------------------------- */
+  --color-shadow-rgb: 0, 0, 0;
 
   --transition-time: 200ms;
   --transition-time-half: 100ms;

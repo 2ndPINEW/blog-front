@@ -7,13 +7,15 @@ import { AppCommonModule } from 'src/app/shared/component/app-common.module';
 import { ArticleComponent } from './component/article/article.component';
 import { TagsComponent } from './component/tags/tags.component';
 import { TocComponent } from './component/toc/toc.component';
+import { MobileTocComponent } from './component/mobile-toc/mobile-toc.component';
 
 @NgModule({
   declarations: [
     BlogComponent,
     ArticleComponent,
     TagsComponent,
-    TocComponent
+    TocComponent,
+    MobileTocComponent
   ],
   imports: [
     CommonModule,
