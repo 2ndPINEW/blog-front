@@ -2,9 +2,9 @@
 
 .main-layout {
   display: grid;
-  margin: auto;
   padding: 32px 8px;
   gap: 64px;
+  justify-content: center;
 
   .main-content {
     grid-area: main;
