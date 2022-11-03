@@ -41,7 +41,6 @@
 
   @include mq(pc) {
     padding: 64px 32px;
-    width: fit-content;
 
     .right-content {
       display: block;
@@ -49,6 +48,6 @@
   
     grid-template: 
       "main right" auto / 
-       minmax(auto, 1024px) 400px;
+      minmax(0, 1024px) 400px;
   }
 }
