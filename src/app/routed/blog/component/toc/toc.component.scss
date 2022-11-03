@@ -12,7 +12,6 @@
     display: flex;
     padding-top: 16px;
 
-
     .complete-mark-area {
       position: absolute;
       padding-top: 0px;
@@ -58,7 +57,6 @@
       .head {
         color: var(--color-text-toc);
         cursor: pointer;
-        pointer-events: auto;
 
         // &.level-1 {
         //   font-size: 20px;
