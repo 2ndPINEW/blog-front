@@ -4,6 +4,7 @@ import { MediaQuery, ObserveResizeService } from 'angular-container-media-query'
 import { MetaData } from '../../service/blog.interface';
 import { BlogApiService } from '../../service/blog.api.service';
 import { ThemeSwitchService } from '../../service/theme-switch.service';
+import { LazyModulePreloadService } from '../../service/lazy-module-preload.service';
 
 @Component({
   selector: 'app-blog-card',
@@ -25,7 +26,8 @@ export class BlogCardComponent {
     elementRef: ElementRef,
     changeDetector: ChangeDetectorRef,
     private blogApi: BlogApiService,
-    private themeService: ThemeSwitchService
+    private themeService: ThemeSwitchService,
+    private modulePreload: LazyModulePreloadService
   ) {
     resize.register(this, elementRef, changeDetector);
   }
@@ -35,6 +37,7 @@ export class BlogCardComponent {
   }
 
   prefetch (path: string): void {
+    this.modulePreload.prefetchStart('blog')
     this.blogApi.getBlogContent(path).subscribe()
   }
 }

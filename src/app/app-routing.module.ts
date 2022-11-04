@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LazyModulePreloadService } from './shared/service/lazy-module-preload.service';
 
+// 遅延読み込みのモジュールを追加したときは以下も更新する
+// src/app/shared/service/lazy-module-preload.service.ts
 const routes: Routes = [
   { path: '', loadChildren: () => import('./routed/index/index.module').then(m => m.IndexModule) },
   { path: 'blog', loadChildren: () => import('./routed/blog/blog.module').then(m => m.BlogModule) },
@@ -11,7 +14,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, { 
     scrollPositionRestoration: 'enabled',
-    preloadingStrategy: PreloadAllModules
+    preloadingStrategy: LazyModulePreloadService
   })],
   exports: [RouterModule]
 })

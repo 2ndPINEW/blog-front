@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { LazyModulePreloadService } from '../../service/lazy-module-preload.service';
 import { TagsApiService } from '../../service/tags.api.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class ChipComponent {
 
   constructor (
     private router: Router,
-    private tagsApi: TagsApiService
+    private tagsApi: TagsApiService,
+    private modulePreload: LazyModulePreloadService
   ) {}
 
   onClick (): void {
@@ -39,6 +41,7 @@ export class ChipComponent {
   }
 
   prefetch (tagName: string): void {
+    this.modulePreload.prefetchStart('tags')
     this.tagsApi.getListFromTag(tagName).subscribe()
   }
 }
