@@ -10,24 +10,24 @@
   /* ---------------------------- */
   --color-header: #E3E4DB;
   --color-on-header: #707070;
-  --color-header-text-heading: #707070;
-  --color-header-text-sanitized: #707070;
+  --color-header-text-heading: #4b4b4b;
+  --color-header-text-sanitized: #5c5c5c;
 
   /* ---------------------------- */
   /* フッターカラー */
   /* ---------------------------- */
   --color-footer: #E3E4DB;
   --color-on-footer: #707070;
-  --color-footer-text-heading: #707070;
-  --color-footer-text-sanitized: #707070;
+  --color-footer-text-heading: #4b4b4b;
+  --color-footer-text-sanitized: #5c5c5c;
 
 
   /* ---------------------------- */
   /* カードカラー */
   /* ---------------------------- */
   --color-card-surface: #E3E4DB;
-  --color-card-text-heading: #707070;
-  --color-card-text-sanitized: #707070;
+  --color-card-text-heading: #4b4b4b;
+  --color-card-text-sanitized: #5c5c5c;
   --color-card-surface-hover: #DCE2B3;
 
 
