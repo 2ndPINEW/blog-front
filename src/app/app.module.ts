@@ -5,6 +5,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserSupportService, BrowserSupportServiceInit } from './shared/service/browser-support.service';
 import { ThemeSwitchService, ThemeSwitchServiceInit } from './shared/service/theme-switch.service';
 
 // AoT requires an exported function for factories
@@ -25,6 +26,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: APP_INITIALIZER,
       useFactory: ThemeSwitchServiceInit,
       deps: [ThemeSwitchService]
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: BrowserSupportServiceInit,
+      deps: [BrowserSupportService]
     }
   ],
   bootstrap: [AppComponent]

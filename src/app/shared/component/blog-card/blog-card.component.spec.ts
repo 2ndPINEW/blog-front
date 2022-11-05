@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BlogApiService } from '../../service/blog.api.service';
+import { BrowserSupportService } from '../../service/browser-support.service';
 
 import { BlogCardComponent } from './blog-card.component';
 
@@ -11,6 +12,10 @@ describe('BlogCardComponent', () => {
 
   }
 
+  const browserSupportServiceStub = {
+    isSupportWebp: true
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BlogCardComponent ],
@@ -18,6 +23,9 @@ describe('BlogCardComponent', () => {
         {
           provide: BlogApiService,
           useValue: blogApiServiceStub
+        }, {
+          provide: BrowserSupportService,
+          useValue: browserSupportServiceStub
         }
       ]
     })
