@@ -22,13 +22,22 @@
     margin: 16px 0;
 
     h1, h2, h3, h4, h5, h6 {
-      margin-top: 32px;
+      margin-top: 64px;
       color: var(--color-text-heading)
     }
 
     p {
       margin: 16px 0;
       color: var(--color-text-sanitized)
+    }
+
+    ol {
+      margin: 16px 0;
+      color: var(--color-text-sanitized)
+    }
+
+    li {
+      margin: 8px 0;
     }
 
     img {
