@@ -28,6 +28,8 @@
       grid-area: thumb;
       width: 100%;
       height: 100%;
+      border-radius: 16px;
+      object-fit: cover;
     }
     .title {
       grid-area: title;
@@ -72,7 +74,7 @@
       "desc  desc  desc  desc" auto
       "..... ..... ..... ....." 4px
       "..... ..... ..... date" auto /
-      64px   8px  1fr   1fr;
+      64px   12px  1fr   1fr;
 
     &.medium-layout {
       .title {
@@ -96,7 +98,7 @@
         "thumb ..... desc desc" 36px
         "..... ..... ..... ....." 4px
         "..... ..... ..... date" auto /
-        88px   8px   1fr   1fr;
+        88px   16px   1fr   1fr;
     }
 
     &.large-layout {
@@ -132,7 +134,7 @@
         "thumb ..... desc desc" 56px
         "..... ..... ..... ....." 4px
         "..... ..... ..... date" auto /
-        128px   16px 1fr   1fr;
+        128px   24px 1fr   1fr;
     }
   }
 }
