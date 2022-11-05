@@ -26,9 +26,6 @@ export class LazyModulePreloadService implements PreloadingStrategy {
     })
 
     return onLoadRequestSubject.pipe(
-      tap(v => {
-        console.log(v)
-      }),
       map(() => {
         return fn()
       })
