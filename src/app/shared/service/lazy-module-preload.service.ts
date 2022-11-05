@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {PreloadingStrategy, Route} from '@angular/router';
-import {map, Observable, of, Subject, tap} from 'rxjs';
+import {map, merge, Observable, of, Subject, tap, timer} from 'rxjs';
 
 type ModulePath = 'blog' | 'tags' | 'settings'
 
@@ -25,7 +25,13 @@ export class LazyModulePreloadService implements PreloadingStrategy {
       onLoadRequestSubject: onLoadRequestSubject
     })
 
-    return onLoadRequestSubject.pipe(
+    return merge(
+      onLoadRequestSubject,
+      timer(3000)
+    ).pipe(
+      tap(() => {
+        this.loadQue = this.loadQue.filter(que => que.path !== route.path)
+      }),
       map(() => {
         return fn()
       })
@@ -37,7 +43,6 @@ export class LazyModulePreloadService implements PreloadingStrategy {
     if (que) {
       que.onLoadRequestSubject.next()
       que.onLoadRequestSubject.complete()
-      this.loadQue = this.loadQue.filter(que => que.path !== path)
     }
   }
 }
