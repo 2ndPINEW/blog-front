@@ -9,6 +9,9 @@
       [tags]="data?.metaData?.tags"
       class="tags"
     ></app-tags>
+    <div class="description" *ngIf="data?.metaData?.description">
+      {{data?.metaData?.description}}
+    </div>
     <app-article
       [stringHtml]="data?.html"
       class="article"
