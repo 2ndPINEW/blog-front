@@ -4,6 +4,7 @@ import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, S
 import { isApiError } from 'src/app/shared/service/api.interface';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
+import { FullscreenAnimationService } from 'src/app/shared/service/fullscreen-animation.service';
 import { SeoService } from 'src/app/shared/service/seo.service';
 import { BlogApiService } from '../../shared/service/blog.api.service';
 import { IndexApiService } from '../../shared/service/index.api.service';
@@ -23,7 +24,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     private zone: NgZone,
     private indexApi: IndexApiService,
     private router: Router,
-    private seo: SeoService
+    private seo: SeoService,
+    private animationService: FullscreenAnimationService
   ) { }
 
   path = this.route.snapshot.paramMap.get('path')
@@ -65,6 +67,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
 
   private init (): void {
+    this.animationService.disableAnimation()
     this.data = undefined
     this.recommends = []
     if (!this.path) {
@@ -127,6 +130,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     const readLineHeight = window.innerHeight * 0.3
     if (this.endOfArticleElementRef.nativeElement.offsetTop - readLineHeight < nowPosition) {
       this.complete = true
+      this.animationService.enableAnimation()
     } else {
       this.complete = false
     }

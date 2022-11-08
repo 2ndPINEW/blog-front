@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FullscreenAnimationService } from '../../service/fullscreen-animation.service';
 import { ThemeSwitchService } from '../../service/theme-switch.service';
 
 @Component({
@@ -9,10 +10,14 @@ import { ThemeSwitchService } from '../../service/theme-switch.service';
 export class FullscreenAnimationComponent {
 
   constructor(
-    private themeService: ThemeSwitchService
+    private themeService: ThemeSwitchService,
+    private animationService: FullscreenAnimationService
   ) { }
 
   get leafColors (): string[] | undefined {
+    if (!this.animationService.isAnimationEnable) {
+      return undefined
+    }
     if (this.themeService.theme === 'spring') {
       return [
         '#F1CFE7',
