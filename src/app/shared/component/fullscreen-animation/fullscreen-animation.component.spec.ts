@@ -7,15 +7,17 @@ describe('FullscreenAnimationComponent', () => {
   let component: FullscreenAnimationComponent;
   let fixture: ComponentFixture<FullscreenAnimationComponent>;
 
+  const themeSwitchServiceStub = {
+    theme: ''
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FullscreenAnimationComponent ],
       providers: [
         {
           provide: ThemeSwitchService,
-          useFactory: () => {
-            theme: ''
-          }
+          useValue: themeSwitchServiceStub
         }
       ]
     })
