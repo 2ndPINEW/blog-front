@@ -1,6 +1,11 @@
 import { Injectable } from "@angular/core";
 
-export type Theme = 'none' | 'halloween' | 'xmas'
+export type Theme = 'none' | 'halloween' | 'xmas' | 'spring'
+
+interface ThemeConfig {
+  theme: Theme
+  condition: Function
+}
 
 export const switchableThemes: { key: Theme, value: string }[] = [
   {
@@ -12,6 +17,9 @@ export const switchableThemes: { key: Theme, value: string }[] = [
   }, {
     key: 'xmas',
     value: 'クリスマス'
+  }, {
+    key: 'spring',
+    value: '春'
   }
 ]
 
@@ -30,17 +38,27 @@ export class ThemeSwitchService {
     document.body.className = ''
     this.theme = 'none'
 
-    const isHalloween = forceUseTheme === 'halloween' || today.getDate() >= 24 && today.getMonth() === 9
+    const themeConfigs: ThemeConfig[] = [{
+      theme: 'halloween',
+      condition: () => {
+        return today.getDate() >= 24 && today.getMonth() === 9
+      }
+    }, {
+      theme: 'xmas',
+      condition: () => {
+        return today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
+      }
+    }, {
+      theme: 'spring',
+      condition: () => {
+        return today.getMonth() === 3
+      }
+    }]
 
-    if (isHalloween) {
-      this.theme = 'halloween'
-      document.body.classList.add('halloween')
-    }
-
-    const isXmas = forceUseTheme === 'xmas' || today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
-    if (isXmas) {
-      this.theme = 'xmas'
-      document.body.classList.add('xmas')
+    const themeConfig = themeConfigs.find(themeConfig => themeConfig.condition() || themeConfig.theme === forceUseTheme)
+    if (themeConfig) {
+      this.theme = themeConfig.theme
+      document.body.classList.add(themeConfig.theme)
     }
   }
 

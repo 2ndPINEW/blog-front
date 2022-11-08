@@ -1,0 +1,85 @@
+.spring {
+  /* ---------------------------- */
+  /* 背景(ボディー)カラー */
+  /* ---------------------------- */
+  --color-background: #FFFFFF;
+
+  /* ---------------------------- */
+  /* ヘッダーカラー */
+  /* ---------------------------- */
+  --color-header: #E6C6BF;
+  --color-on-header: #5d433d;
+  --color-header-text-heading: #654037;
+  --color-header-text-sanitized: #654037;
+
+  /* ---------------------------- */
+  /* フッターカラー */
+  /* ---------------------------- */
+  --color-footer: #A19430;
+  --color-on-footer: #ffffff;
+  --color-footer-text-heading: #ffffff;
+  --color-footer-text-sanitized: #ffffff;
+
+
+  /* ---------------------------- */
+  /* カードカラー */
+  /* ---------------------------- */
+  --color-card-surface: #E6C6BF;
+  --color-card-text-heading: #654037;
+  --color-card-text-sanitized: #654037;
+  --color-card-surface-hover: #eb98ca;
+
+  /* ---------------------------- */
+  /* チップカラー */
+  /* ---------------------------- */
+  --color-chip-surface: #459DF6;
+  --color-chip-surface-fill: #459DF6;
+  --color-chip-surface-hover: #0368B6;
+  --color-chip-surface-selected: #0368B6;
+
+  --color-chip-text: #ffffff;
+  --color-chip-text-fill: #ffffff;
+  --color-chip-text-hover: #ffffff;
+  --color-chip-text-selected: #ffffff;
+
+  /* ---------------------------- */
+  /* テキストカラー */
+  /* ---------------------------- */
+  --color-text-heading: #5d3d34;
+  --color-text-sanitized: #4f2d24;
+  --color-text-toc: #ffffff;
+
+  /* ---------------------------- */
+  /* プログレスバー */
+  /* ---------------------------- */
+  --color-surface-progress-bar: #CF231B;
+  --color-background-progress-bar: #ffffff;
+
+
+  /* ---------------------------- */
+  /* スケルトン */
+  /* ---------------------------- */
+  --color-skeleton: #E6998A;
+  --color-skeleton-line: #DE4108;
+
+  /* ---------------------------- */
+  /* リンク */
+  /* ---------------------------- */
+  --color-link: #ff21c0;
+  --color-link-hover: #ff21c0;
+
+  /* ---------------------------- */
+  /* モバイルのTOCアイコン */
+  /* ---------------------------- */
+  --color-surface-mobile-toc-icon: #A19430;
+  --color-mobile-toc-icon: #ffffff;
+
+  /* ---------------------------- */
+  /* 影 */
+  /* ---------------------------- */
+  --color-shadow-rgb: 0, 0, 0;
+
+  --transition-time: 200ms;
+  --transition-time-half: 100ms;
+  --transition-time-quarter: 100ms;
+}
