@@ -25,11 +25,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: APP_INITIALIZER,
       useFactory: ThemeSwitchServiceInit,
-      deps: [ThemeSwitchService]
+      deps: [ThemeSwitchService],
+      multi: true
     }, {
       provide: APP_INITIALIZER,
       useFactory: BrowserSupportServiceInit,
-      deps: [BrowserSupportService]
+      deps: [BrowserSupportService],
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

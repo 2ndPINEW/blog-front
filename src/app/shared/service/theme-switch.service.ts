@@ -93,6 +93,6 @@ export class ThemeSwitchService {
   }
 }
 
-export function ThemeSwitchServiceInit (themeSwitchService: ThemeSwitchService): void {
-  themeSwitchService.init()
+export function ThemeSwitchServiceInit (themeSwitchService: ThemeSwitchService): Function {
+  return () => themeSwitchService.init()
 }
