@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ChipComponent } from './chip/chip.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
+import { FullscreenAnimationComponent } from './fullscreen-animation/fullscreen-animation.component';
+import { LeafComponent } from './fullscreen-animation/leaf/leaf.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     BlogCardComponent,
     ChipComponent,
-    SearchComponent
+    SearchComponent,
+    FullscreenAnimationComponent,
+    LeafComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     BlogCardComponent,
     ChipComponent,
-    SearchComponent
+    SearchComponent,
+    FullscreenAnimationComponent,
   ]
 })
 export class AppCommonModule { }

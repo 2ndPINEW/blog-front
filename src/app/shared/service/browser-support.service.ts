@@ -24,6 +24,6 @@ export class BrowserSupportService {
   }
 }
 
-export function BrowserSupportServiceInit (browserSupportService: BrowserSupportService): void {
-  browserSupportService.init()
+export function BrowserSupportServiceInit (browserSupportService: BrowserSupportService): Function {
+  return () => browserSupportService.init()
 }
