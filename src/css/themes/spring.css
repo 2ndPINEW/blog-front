@@ -15,7 +15,7 @@
   /* ---------------------------- */
   /* フッターカラー */
   /* ---------------------------- */
-  --color-footer: #A19430;
+  --color-footer: #E1C021;
   --color-on-footer: #ffffff;
   --color-footer-text-heading: #ffffff;
   --color-footer-text-sanitized: #ffffff;
@@ -32,7 +32,7 @@
   /* ---------------------------- */
   /* チップカラー */
   /* ---------------------------- */
-  --color-chip-surface: #459DF6;
+  --color-chip-surface: #e967b5;
   --color-chip-surface-fill: #459DF6;
   --color-chip-surface-hover: #0368B6;
   --color-chip-surface-selected: #0368B6;
@@ -47,12 +47,12 @@
   /* ---------------------------- */
   --color-text-heading: #5d3d34;
   --color-text-sanitized: #4f2d24;
-  --color-text-toc: #ffffff;
+  --color-text-toc: #5d3d34;
 
   /* ---------------------------- */
   /* プログレスバー */
   /* ---------------------------- */
-  --color-surface-progress-bar: #CF231B;
+  --color-surface-progress-bar: #e967b5;
   --color-background-progress-bar: #ffffff;
 
 

@@ -5,6 +5,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppCommonModule } from './shared/component/app-common.module';
 import { BrowserSupportService, BrowserSupportServiceInit } from './shared/service/browser-support.service';
 import { ThemeSwitchService, ThemeSwitchServiceInit } from './shared/service/theme-switch.service';
 
@@ -19,7 +20,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AppCommonModule
   ],
   providers: [
     {
