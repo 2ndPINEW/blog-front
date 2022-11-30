@@ -2,7 +2,7 @@
  * ApiError時の返り値の型
  */
  export interface ApiError {
-  error_code: string
+  error_code: string | number
   error_title?: string
   error_message?: string
 }

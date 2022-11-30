@@ -1,7 +1,7 @@
 import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
-import { isApiError } from 'src/app/shared/service/api.interface';
+import { ApiError } from 'src/app/shared/service/api.interface';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
 import { FullscreenAnimationService } from 'src/app/shared/service/fullscreen-animation.service';
@@ -75,20 +75,6 @@ export class BlogComponent implements OnInit, OnDestroy {
       return
     }
     this.blogApi.getBlogContent(this.path).subscribe(data => {
-      if (isApiError(data)) {
-        this.data = {
-          html: '',
-          metaData: {
-            date: data.error_message ?? 'エラーが発生しました',
-            description: '',
-            icon: '',
-            tags: [],
-            title: data.error_title ?? '通信エラー',
-            path: ''
-          }
-        }
-        return
-      }
       this.data = data
       if (data?.metaData?.title && data?.metaData?.description && this.path) {
         this.seo.update(data?.metaData?.title, data?.metaData?.description)
@@ -103,6 +89,18 @@ export class BlogComponent implements OnInit, OnDestroy {
             .filter(content => content.path !== this.path)
             .slice(-3)
       })
+    }, (e: ApiError) => {
+      this.data = {
+        html: '',
+        metaData: {
+          date: e.error_code === 404 ? '指定した記事が見つかりません' : '通信エラーが発生しました',
+          description: '',
+          icon: '',
+          tags: [],
+          title: e.error_title ?? '通信エラー',
+          path: ''
+        }
+      }
     })
   }
 

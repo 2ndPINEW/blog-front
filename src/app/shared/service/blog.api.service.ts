@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { ApiService } from "src/app/shared/service/api.service";
 import { Observable, of, Subject, tap } from "rxjs";
 import { BlogPageData } from "./blog.interface";
-import { ApiError } from "./api.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class BlogApiService {
    * ブログ記事を取得する
    * キャッシュとか別の箇所から同一APIを叩いていた場合はいい感じにしてくれるので、何も気にせずに叩きまくって良い
    */
-  getBlogContent (fileName: string): Observable<BlogPageData | ApiError> {
+  getBlogContent (fileName: string): Observable<BlogPageData> {
     // キャッシュがある場合はそこから返す
     const cache = this.memoryCache.find(cache => cache.fileName === fileName)
     if (cache) {
