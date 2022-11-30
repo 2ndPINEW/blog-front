@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ApiError } from 'src/app/shared/service/api.interface';
 import { MetaData } from 'src/app/shared/service/blog.interface';
 
 import { SeoService } from 'src/app/shared/service/seo.service';
@@ -58,6 +59,8 @@ export class TagsComponent implements OnInit {
     })
     this.tagsApi.getListFromTag(this.selectedTag).subscribe(data => {
       this.contents = data.contents
+    }, (e: ApiError) => {
+      this.contents = []
     })
   }
 
