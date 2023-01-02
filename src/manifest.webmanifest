@@ -1,8 +1,8 @@
 {
   "name": "ぴのブログ",
   "short_name": "ぴ",
-  "theme_color": "#707070",
-  "background_color": "#707070",
+  "theme_color": "#E3E4DB",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
