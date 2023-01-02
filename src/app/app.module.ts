@@ -10,6 +10,7 @@ import { BrowserSupportService, BrowserSupportServiceInit } from './shared/servi
 import { ThemeSwitchService, ThemeSwitchServiceInit } from './shared/service/theme-switch.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AppInitializeService, AppInitializeServiceInit } from './shared/service/app-initialize.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,6 +42,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: APP_INITIALIZER,
       useFactory: BrowserSupportServiceInit,
       deps: [BrowserSupportService],
+      multi: true
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: AppInitializeServiceInit,
+      deps: [AppInitializeService],
       multi: true
     }
   ],
