@@ -74,7 +74,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません')
       return
     }
-    this.blogApi.getBlogContent(this.path).subscribe(data => {
+    this.blogApi.getBlogContent(this.path, true).subscribe(data => {
       this.data = data
       if (data?.metaData?.title && data?.metaData?.description && this.path) {
         this.seo.update(data?.metaData?.title, data?.metaData?.description)
