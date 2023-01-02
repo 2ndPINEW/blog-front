@@ -79,9 +79,6 @@ export class BlogComponent implements OnInit, OnDestroy {
       if (data?.metaData?.title && data?.metaData?.description && this.path) {
         this.seo.update(data?.metaData?.title, data?.metaData?.description)
       }
-      this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-        this.makeSectionScrollPositionMap()
-      })
     }, (e: ApiError) => {
       this.data = {
         html: '',
@@ -95,6 +92,9 @@ export class BlogComponent implements OnInit, OnDestroy {
         }
       }
     }, () => {
+      this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
+        this.makeSectionScrollPositionMap()
+      })
       this.indexApi.getList(1).subscribe(data => {
         this.recommends =
           [...data.contents]
