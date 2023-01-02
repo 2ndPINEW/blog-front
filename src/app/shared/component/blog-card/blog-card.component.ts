@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
-import { environment  } from 'src/environments/environment';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input } from '@angular/core'
+import { environment  } from 'src/environments/environment'
 import { MediaQuery, ObserveResizeService } from 'angular-container-media-query'
-import { MetaData } from '../../service/blog.interface';
-import { BlogApiService } from '../../service/blog.api.service';
-import { ThemeSwitchService } from '../../service/theme-switch.service';
-import { LazyModulePreloadService } from '../../service/lazy-module-preload.service';
-import { BrowserSupportService } from '../../service/browser-support.service';
+import { MetaData } from '../../service/blog.interface'
+import { BlogApiService } from '../../service/blog.api.service'
+import { ThemeSwitchService } from '../../service/theme-switch.service'
+import { LazyModulePreloadService } from '../../service/lazy-module-preload.service'
+import { BrowserSupportService } from '../../service/browser-support.service'
 
 @Component({
   selector: 'app-blog-card',
@@ -13,25 +13,38 @@ import { BrowserSupportService } from '../../service/browser-support.service';
   styleUrls: ['./blog-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlogCardComponent {
+export class BlogCardComponent implements AfterViewInit {
   @Input()
   data!: MetaData
 
-  @MediaQuery('(min-width: 500px)') mediumLayout = false;
-  @MediaQuery('(min-width: 880px)') largeLayout = false;
+  @MediaQuery('(min-width: 500px)') mediumLayout = false
+  @MediaQuery('(min-width: 880px)') largeLayout = false
 
   private themedThumbnail = this.themeService.blogCardThumbnail
 
   constructor(
-    resize: ObserveResizeService,
-    elementRef: ElementRef,
-    changeDetector: ChangeDetectorRef,
+    private resize: ObserveResizeService,
+    private elementRef: ElementRef,
+    private changeDetector: ChangeDetectorRef,
     private blogApi: BlogApiService,
     private themeService: ThemeSwitchService,
     private modulePreload: LazyModulePreloadService,
     private browserSupport: BrowserSupportService
   ) {
-    resize.register(this, elementRef, changeDetector);
+    this.resize.register(this, this.elementRef, this.changeDetector)
+  }
+
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver(
+      (entries)=>{
+        entries.forEach((entry: any) => {
+          if(!entry.isIntersecting) return
+          this.prefetch(this.data.path)
+          observer.unobserve(this.elementRef.nativeElement)
+        }
+      )
+    })
+    observer.observe(this.elementRef.nativeElement)
   }
 
   resourceUrl (path: string): string {
