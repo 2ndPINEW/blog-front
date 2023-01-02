@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AppCommonModule } from './shared/component/app-common.module';
 import { BrowserSupportService, BrowserSupportServiceInit } from './shared/service/browser-support.service';
 import { ThemeSwitchService, ThemeSwitchServiceInit } from './shared/service/theme-switch.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -21,7 +23,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AppCommonModule
+    AppCommonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {
