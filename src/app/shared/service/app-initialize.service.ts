@@ -8,10 +8,8 @@ export class AppInitializeService {
   ) {}
 
   init (): void {
-    console.log('Application init')
     const loadingScreen = document.querySelector('.app-loading')
     if (!loadingScreen) {
-      console.error('loading element not found')
       return
     }
     loadingScreen.addEventListener('transitionend', () => {
