@@ -82,13 +82,6 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         this.makeSectionScrollPositionMap()
       })
-      this.indexApi.getList(1).subscribe(data => {
-        this.recommends =
-          [...data.contents]
-            .sort(() => (Math.random() < 0.5) ? -1 : 1)
-            .filter(content => content.path !== this.path)
-            .slice(-3)
-      })
     }, (e: ApiError) => {
       this.data = {
         html: '',
@@ -101,6 +94,14 @@ export class BlogComponent implements OnInit, OnDestroy {
           path: ''
         }
       }
+    }, () => {
+      this.indexApi.getList(1).subscribe(data => {
+        this.recommends =
+          [...data.contents]
+            .sort(() => (Math.random() < 0.5) ? -1 : 1)
+            .filter(content => content.path !== this.path)
+            .slice(-3)
+      })
     })
   }
 
