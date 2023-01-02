@@ -27,8 +27,10 @@
   .icon {
     border-radius: 100%;
     background-color: var(--color-header);
-    width: 50vw;
-    width: 50dvw;
+    max-width: 50vw;
+    max-width: 50dvw;
+    max-height: 40vh;
+    max-height: 40dvh;
     aspect-ratio: 1 / 1;
   }
 
