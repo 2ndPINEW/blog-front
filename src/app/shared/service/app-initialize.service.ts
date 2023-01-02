@@ -8,6 +8,10 @@ export class AppInitializeService {
   ) {}
 
   init (): void {
+    this.closeSplashScreen()
+  }
+
+  private closeSplashScreen (): void {
     const loadingScreen = document.querySelector('.app-loading')
     if (!loadingScreen) {
       return
