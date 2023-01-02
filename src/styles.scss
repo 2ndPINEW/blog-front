@@ -6,3 +6,35 @@
 @use 'css/themes/xmas.css';
 @use 'css/themes/spring.css';
 @use 'css/util.css';
+
+.app-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 100vw;
+  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: var(--color-background);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    border-radius: 100%;
+    background-color: var(--color-header);
+    width: 50vw;
+    width: 50dvw;
+    aspect-ratio: 1 / 1;
+  }
+
+  transition: opacity var(--transition-time);
+
+  &.loaded {
+    opacity: 0;
+  }
+}
