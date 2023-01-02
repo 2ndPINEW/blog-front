@@ -15,7 +15,7 @@ import { BrowserSupportService } from '../../service/browser-support.service'
 })
 export class BlogCardComponent implements AfterViewInit {
   @Input()
-  data!: MetaData
+  data: MetaData | undefined
 
   @MediaQuery('(min-width: 500px)') mediumLayout = false
   @MediaQuery('(min-width: 880px)') largeLayout = false
@@ -39,8 +39,10 @@ export class BlogCardComponent implements AfterViewInit {
       (entries)=>{
         entries.forEach((entry: any) => {
           if(!entry.isIntersecting) return
-          this.prefetch(this.data.path)
-          observer.unobserve(this.elementRef.nativeElement)
+          if (this.data?.path) {
+            this.prefetch(this.data?.path)
+            observer.unobserve(this.elementRef.nativeElement)
+          }
         }
       )
     })
