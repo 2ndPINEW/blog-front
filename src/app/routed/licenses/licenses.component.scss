@@ -1,0 +1,28 @@
+@import "/src/css/global.scss";
+
+:host {
+  display: block;
+
+  .licenses {
+    padding: 16px;
+    min-height: 100vh;
+  }
+
+  @include mq(tablet) {
+    .licenses {
+      padding: 32px;
+    }
+  }
+
+  @include mq(spc) {
+    .licenses {
+      padding: 48px;
+    }
+  }
+
+  @include mq(pc) {
+    .licenses {
+      padding: 64px;
+    }
+  }
+}

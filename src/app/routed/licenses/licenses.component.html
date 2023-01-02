@@ -1,0 +1,8 @@
+<app-header
+  [title]="'ライセンス'"
+  [description]="'3rd party licenses'"
+></app-header>
+
+<div class="licenses" [innerText]="(license$ | async)"></div>
+
+<app-footer></app-footer>
