@@ -2983,6 +2983,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"angular-container-media-query@npm:^13.1.1":
+  version: 13.1.1
+  resolution: "angular-container-media-query@npm:13.1.1"
+  dependencies:
+    css-mediaquery: ^0.1.2
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/compiler": ^13.1.1
+    "@angular/core": ^13.1.1
+  checksum: d9e9e61c9f931c44acbb83a66849e1a402a086c16bed8dc32c4f984cbb418b485e5227259f9b659c01d42366c12c9a7a40015c92c1d6a6a16b16da35c771e95a
+  languageName: node
+  linkType: hard
+
 "ansi-colors@npm:4.1.1":
   version: 4.1.1
   resolution: "ansi-colors@npm:4.1.1"
@@ -3300,6 +3313,7 @@ __metadata:
     "@types/jasmine": ~4.0.0
     "@typescript-eslint/eslint-plugin": 5.43.0
     "@typescript-eslint/parser": 5.43.0
+    angular-container-media-query: ^13.1.1
     eslint: ^8.28.0
     highlight.js: ^11.6.0
     jasmine-core: ~4.1.0
@@ -3934,6 +3948,13 @@ __metadata:
   peerDependencies:
     webpack: ^5.0.0
   checksum: 170fdbc630a05a43679ef60fa97694766b568dbde37adccc0faafa964fc675f08b976bc68837bb73b61d60240e8d2cbcbf51540fe94ebc9dafc56e7c46ba5527
+  languageName: node
+  linkType: hard
+
+"css-mediaquery@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "css-mediaquery@npm:0.1.2"
+  checksum: 8e26ae52d8aaaa71893f82fc485363ff0fab494b7d3b3464572aaed50714b8b538d33dbdaa69f0c02cf7f80d1f4d9a77519306c0492223ce91b3987475031a69
   languageName: node
   linkType: hard
 

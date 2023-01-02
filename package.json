@@ -25,6 +25,7 @@
     "@angular/service-worker": "^14.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "angular-container-media-query": "^13.1.1",
     "highlight.js": "^11.6.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
