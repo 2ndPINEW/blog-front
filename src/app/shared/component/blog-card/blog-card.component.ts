@@ -1,11 +1,12 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input } from '@angular/core'
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core'
 import { environment  } from 'src/environments/environment'
-import { MediaQuery, ObserveResizeService } from 'angular-container-media-query'
 import { MetaData } from '../../service/blog.interface'
 import { BlogApiService } from '../../service/blog.api.service'
 import { ThemeSwitchService } from '../../service/theme-switch.service'
 import { LazyModulePreloadService } from '../../service/lazy-module-preload.service'
 import { BrowserSupportService } from '../../service/browser-support.service'
+import { match } from 'css-mediaquery'
+import { fromEvent, Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-blog-card',
@@ -13,25 +14,29 @@ import { BrowserSupportService } from '../../service/browser-support.service'
   styleUrls: ['./blog-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlogCardComponent implements AfterViewInit {
+export class BlogCardComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input()
   data: MetaData | undefined
 
-  @MediaQuery('(min-width: 500px)') mediumLayout = false
-  @MediaQuery('(min-width: 880px)') largeLayout = false
-
   private themedThumbnail = this.themeService.blogCardThumbnail
 
+  private subscription = new Subscription()
+
   constructor(
-    private resize: ObserveResizeService,
+    private cdRef: ChangeDetectorRef,
     private elementRef: ElementRef,
-    private changeDetector: ChangeDetectorRef,
     private blogApi: BlogApiService,
     private themeService: ThemeSwitchService,
     private modulePreload: LazyModulePreloadService,
     private browserSupport: BrowserSupportService
-  ) {
-    this.resize.register(this, this.elementRef, this.changeDetector)
+  ) {}
+
+  ngOnInit (): void {
+    this.subscription.add(
+      fromEvent(window, 'resize').subscribe(() => {
+        this.cdRef.detectChanges()
+      })
+    )
   }
 
   ngAfterViewInit(): void {
@@ -49,6 +54,10 @@ export class BlogCardComponent implements AfterViewInit {
     observer.observe(this.elementRef.nativeElement)
   }
 
+  ngOnDestroy (): void {
+    this.subscription.unsubscribe()
+  }
+
   resourceUrl (path: string): string {
     const fullPath = this.browserSupport.isSupportWebp ? `${environment.apiUrl}${path.split('.')[0]}.webp` : `${environment.apiUrl}${path}`
     return this.themedThumbnail ?? fullPath
@@ -57,5 +66,16 @@ export class BlogCardComponent implements AfterViewInit {
   prefetch (path: string): void {
     this.modulePreload.prefetchStart('blog')
     this.blogApi.getBlogContent(path).subscribe()
+  }
+
+  get mediumLayout (): boolean {
+    return match('(min-width: 500px)', {
+      width: `${(this.elementRef.nativeElement as HTMLElement).clientWidth}px`
+    })
+  }
+  get largeLayout (): boolean {
+    return match('(min-width: 880px)', {
+      width: `${(this.elementRef.nativeElement as HTMLElement).clientWidth}px`
+    })
   }
 }
