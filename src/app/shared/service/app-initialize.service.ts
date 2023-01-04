@@ -10,19 +10,7 @@ export class AppInitializeService {
   ) {}
 
   init (): void {
-    this.closeSplashScreen()
     this.handleApplicationUnrecoverableState()
-  }
-
-  private closeSplashScreen (): void {
-    const loadingScreen = document.querySelector('.app-loading')
-    if (!loadingScreen) {
-      return
-    }
-    loadingScreen.addEventListener('transitionend', () => {
-      loadingScreen.remove()
-    })
-    loadingScreen.classList.add('loaded')
   }
 
   private handleApplicationUnrecoverableState (): void {
