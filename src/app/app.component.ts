@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fromEvent, race, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,11 @@ export class AppComponent implements OnInit {
     if (!loadingScreen) {
       return
     }
-    loadingScreen.addEventListener('transitionend', () => {
+    // transitionendが発火しないことがたまにありそうなので、適当にタイムアウトする
+    race(
+      fromEvent(loadingScreen, 'transitionend'),
+      timer(500)
+    ).subscribe(() => {
       loadingScreen.remove()
     })
     loadingScreen.classList.add('loaded')
