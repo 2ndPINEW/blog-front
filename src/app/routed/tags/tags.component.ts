@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiError } from 'src/app/shared/service/api.interface';
-import { MetaData } from 'src/app/shared/service/blog.interface';
+import { fetchFn } from 'src/app/shared/service/api.service';
+import { BlogListData, MetaData } from 'src/app/shared/service/blog.interface';
 
 import { SeoService } from 'src/app/shared/service/seo.service';
 import { TagsApiService } from 'src/app/shared/service/tags.api.service';
@@ -20,6 +21,8 @@ export class TagsComponent implements OnInit {
   private subscription = new Subscription()
 
   contents: MetaData[] = new Array(10)
+
+  fetchTagFn = fetchFn<BlogListData>(`search/tags/${this.selectedTag}`)
 
   constructor(
     private tagsApi: TagsApiService,
@@ -57,10 +60,13 @@ export class TagsComponent implements OnInit {
     this.tagsApi.getTags().subscribe(data => {
       this.tags = data.tags
     })
-    this.tagsApi.getListFromTag(this.selectedTag).subscribe(data => {
-      this.contents = data.contents
-    }, (e: ApiError) => {
-      this.contents = []
+    this.fetchTagFn().subscribe({
+      next: data => {
+        this.contents = data.contents
+      },
+      error: (e: ApiError) => {
+        this.contents = []
+      }
     })
   }
 

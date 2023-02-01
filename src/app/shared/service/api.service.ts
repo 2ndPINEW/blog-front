@@ -2,10 +2,15 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { isApiError } from './api.interface';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 export interface ApiOptions {
+}
+
+export const fetchFn = <T>(path: string): (() => Observable<T>) => {
+  const http = inject(HttpClient)
+  return () => http.get<T>(`/api/${path}`)
 }
 
 @Injectable({
