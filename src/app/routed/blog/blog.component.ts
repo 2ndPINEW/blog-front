@@ -93,11 +93,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       }
     }, () => {
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-        this.subscription.add(
-          timer(0, 1000).subscribe(() => {
-            this.makeSectionScrollPositionMap()
-          })
-        )
+        this.makeSectionScrollPositionMap()
       })
       this.indexApi.getList(1).subscribe(data => {
         this.recommends =
