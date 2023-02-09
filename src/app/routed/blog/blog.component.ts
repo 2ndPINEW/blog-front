@@ -153,7 +153,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     // TODO: ViewChild とか使ってエレメント探すようにする
     const sectionElements = document.querySelectorAll(`h${section.level}`)
     sectionElements.forEach(sectionElement => {
-      if (sectionElement.id === section.text) {
+      if (sectionElement.innerHTML === section.text) {
         sectionElement.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
