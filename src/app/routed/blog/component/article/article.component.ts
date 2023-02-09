@@ -28,14 +28,14 @@ export class ArticleComponent implements OnChanges {
 
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         hljs.highlightAll()
-        if (currentValue.includes('twitter-tweet')) {
+        if (currentValue?.includes('twitter-tweet')) {
           this.loadTwitterWidget()
         }
       })
       // TODO: 本来ならこれいらないはずなので調べる
       window.setTimeout(() => {
         hljs.highlightAll()
-        if (currentValue.includes('twitter-tweet')) {
+        if (currentValue?.includes('twitter-tweet')) {
           this.loadTwitterWidget()
         }
       })
