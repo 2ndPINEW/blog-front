@@ -1,6 +1,6 @@
 import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime } from 'rxjs';
+import { debounceTime, fromEvent, merge, MonoTypeOperatorFunction, Observable, Subscription, take, throttleTime, timer } from 'rxjs';
 import { ApiError } from 'src/app/shared/service/api.interface';
 
 import { BlogPageData, MetaData } from 'src/app/shared/service/blog.interface';
@@ -93,7 +93,11 @@ export class BlogComponent implements OnInit, OnDestroy {
       }
     }, () => {
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-        this.makeSectionScrollPositionMap()
+        this.subscription.add(
+          timer(0, 1000).subscribe(() => {
+            this.makeSectionScrollPositionMap()
+          })
+        )
       })
       this.indexApi.getList(1).subscribe(data => {
         this.recommends =
@@ -153,7 +157,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     // TODO: ViewChild とか使ってエレメント探すようにする
     const sectionElements = document.querySelectorAll(`h${section.level}`)
     sectionElements.forEach(sectionElement => {
-      if (sectionElement.innerHTML === section.text) {
+      if (sectionElement.id === section.text) {
         sectionElement.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
