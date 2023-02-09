@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, NgZone, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import hljs from 'highlight.js';
 import { take } from 'rxjs';
@@ -16,20 +16,36 @@ export class ArticleComponent implements OnChanges {
 
   constructor (
     private sanitizer: DomSanitizer,
-    private zone: NgZone
+    private zone: NgZone,
+    private renderer: Renderer2
   ) {}
 
   ngOnChanges (changes: SimpleChanges): void {
     if (changes['stringHtml']) {
+      // TODO: 型をつける
       const currentValue = changes['stringHtml'].currentValue
       this.html = this.sanitizer.bypassSecurityTrustHtml(currentValue)
 
       this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
         hljs.highlightAll()
+        if (currentValue.includes('twitter-tweet')) {
+          this.loadTwitterWidget()
+        }
       })
+      // TODO: 本来ならこれいらないはずなので調べる
       window.setTimeout(() => {
         hljs.highlightAll()
+        if (currentValue.includes('twitter-tweet')) {
+          this.loadTwitterWidget()
+        }
       })
     }
+  }
+
+  private loadTwitterWidget (): void {
+    const script = this.renderer.createElement('script') as HTMLScriptElement
+    script.src = 'https://platform.twitter.com/widgets.js'
+    script.async = true
+    this.renderer.appendChild(document.body, script)
   }
 }
