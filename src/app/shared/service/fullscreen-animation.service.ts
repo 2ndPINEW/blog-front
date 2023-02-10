@@ -9,9 +9,7 @@ export class FullscreenAnimationService {
 
   constructor (
     private router: Router
-  ) {}
-
-  ngOnInit (): void {
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.enableAnimation()
