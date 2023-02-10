@@ -97,7 +97,11 @@ export class BlogComponent implements OnInit, OnDestroy {
         },
         complete: () => {
           this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-            this.makeSectionScrollPositionMap()
+            this.subscription.add(
+              timer(0, 2000).subscribe(() => {
+                this.makeSectionScrollPositionMap()
+              })
+            )
           })
           this.indexApi.getList(1).subscribe(data => {
             this.recommends =
@@ -118,6 +122,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     const regexp = `H(${this.indexLevels.join('|')})`
     const allDom = document.querySelectorAll('*')
     const allHeadDom = Array.prototype.filter.call(allDom, (dom: HTMLElement) => (new RegExp(regexp)).test(dom.tagName))
+    this.sectionPositionMap = []
     allHeadDom.forEach((head: HTMLElement) => {
       const level = Number(head.tagName.slice(-1)) as HtmlHeadLevel
       const position = head.offsetTop - 1
