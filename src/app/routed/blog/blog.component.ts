@@ -74,35 +74,41 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.seo.update('お探しの記事が見つかりません', 'お探しの記事が見つかりません')
       return
     }
-    this.blogApi.getBlogContent(this.path, true).subscribe(data => {
-      this.data = data
-      if (data?.metaData?.title && data?.metaData?.description && this.path) {
-        this.seo.update(data?.metaData?.title, data?.metaData?.description)
-      }
-    }, (e: ApiError) => {
-      this.data = {
-        html: '',
-        metaData: {
-          date: e.error_code === 404 ? '指定した記事が見つかりません' : '通信エラーが発生しました',
-          description: '',
-          icon: '',
-          tags: [],
-          title: e.error_title ?? '通信エラー',
-          path: ''
+    this.blogApi.getBlogContent(this.path, true).subscribe(
+      {
+        next: data => {
+          this.data = data
+          if (data?.metaData?.title && data?.metaData?.description && this.path) {
+            this.seo.update(data?.metaData?.title, data?.metaData?.description)
+          }
+        },
+        error: (e: ApiError) => {
+          this.data = {
+            html: '',
+            metaData: {
+              date: e.error_code === 404 ? '指定した記事が見つかりません' : '通信エラーが発生しました',
+              description: '',
+              icon: '',
+              tags: [],
+              title: e.error_title ?? '通信エラー',
+              path: ''
+            }
+          }
+        },
+        complete: () => {
+          this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
+            this.makeSectionScrollPositionMap()
+          })
+          this.indexApi.getList(1).subscribe(data => {
+            this.recommends =
+              [...data.contents]
+                .sort(() => (Math.random() < 0.5) ? -1 : 1)
+                .filter(content => content.path !== this.path)
+                .slice(-3)
+          })
         }
       }
-    }, () => {
-      this.zone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-        this.makeSectionScrollPositionMap()
-      })
-      this.indexApi.getList(1).subscribe(data => {
-        this.recommends =
-          [...data.contents]
-            .sort(() => (Math.random() < 0.5) ? -1 : 1)
-            .filter(content => content.path !== this.path)
-            .slice(-3)
-      })
-    })
+    )
   }
 
   // Dom生成時にセクションごとの座標を保持しておく

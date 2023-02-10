@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiError } from 'src/app/shared/service/api.interface';
@@ -12,7 +12,7 @@ import { TagsApiService } from 'src/app/shared/service/tags.api.service';
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.scss']
 })
-export class TagsComponent implements OnInit {
+export class TagsComponent implements OnInit, OnDestroy {
   tags!: string[]
   
   private selectedTag: string = this.route.snapshot.paramMap.get('tag') ?? ''
@@ -57,11 +57,16 @@ export class TagsComponent implements OnInit {
     this.tagsApi.getTags().subscribe(data => {
       this.tags = data.tags
     })
-    this.tagsApi.getListFromTag(this.selectedTag).subscribe(data => {
-      this.contents = data.contents
-    }, (e: ApiError) => {
-      this.contents = []
-    })
+    this.tagsApi.getListFromTag(this.selectedTag).subscribe(
+      {
+        next: data => {
+          this.contents = data.contents
+        },
+        error: (_: ApiError) => {
+          this.contents = []
+        }
+      }
+    )
   }
 
   get description (): string {
