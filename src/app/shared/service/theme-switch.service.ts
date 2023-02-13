@@ -1,32 +1,38 @@
 import { Injectable } from "@angular/core";
 
-// TODO: 型の定義が複数変更必要で微妙だから直す
-export type Theme = 'none' | 'halloween' | 'xmas' | 'spring' | 'valentine'
-
-interface ThemeConfig {
+export interface ThemeConfig {
   theme: Theme
-  condition: Function
+  label: string
+  condition: (today: Date) => boolean
 }
 
-export const switchableThemes: { key: Theme, value: string }[] = [
-  {
-    key: 'none',
-    value: 'リセット(自動)'
-  }, {
-    key: 'halloween',
-    value: 'ハロウィン'
-  }, {
-    key: 'xmas',
-    value: 'クリスマス'
-  }, {
-    key: 'spring',
-    value: '春'
+export type Theme = 'none' | 'halloween' | 'xmas' | 'spring' | 'valentine'
+
+export const ThemeConfigs: ThemeConfig[] = [{
+  theme: 'halloween',
+  label: 'リセット(自動)',
+  condition: (today: Date) => {
+    return today.getDate() >= 24 && today.getMonth() === 9
   }
-  , {
-    key: 'valentine',
-    value: 'バレンタイン'
+}, {
+  theme: 'xmas',
+  label: 'クリスマス',
+  condition: (today: Date) => {
+    return today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
   }
-]
+}, {
+  theme: 'spring',
+  label: '春',
+  condition: (today: Date) => {
+    return today.getMonth() === 3
+  }
+}, {
+  theme: 'valentine',
+  label: 'バレンタイン',
+  condition: (today: Date) => {
+    return today.getMonth() === 1 && today.getDate() === 14
+  }
+}]
 
 @Injectable({
   providedIn: 'root'
@@ -38,34 +44,12 @@ export class ThemeSwitchService {
 
   init (): void {
     const today = new Date()
-    const forceUseTheme = sessionStorage.getItem('theme') as Theme
+    const forceUseTheme = sessionStorage.getItem('theme')
 
     document.body.className = ''
     this.theme = 'none'
 
-    const themeConfigs: ThemeConfig[] = [{
-      theme: 'halloween',
-      condition: () => {
-        return today.getDate() >= 24 && today.getMonth() === 9
-      }
-    }, {
-      theme: 'xmas',
-      condition: () => {
-        return today.getMonth() === 11 && 18 <= today.getDate() && today.getDate() <= 25
-      }
-    }, {
-      theme: 'spring',
-      condition: () => {
-        return today.getMonth() === 3
-      }
-    }, {
-      theme: 'valentine',
-      condition: () => {
-        return today.getMonth() === 1 && today.getDate() === 14
-      }
-    }]
-
-    const themeConfig = themeConfigs.find(themeConfig => themeConfig.condition() || themeConfig.theme === forceUseTheme)
+    const themeConfig = ThemeConfigs.find(themeConfig => themeConfig.condition(today) || themeConfig.theme === forceUseTheme)
     if (themeConfig) {
       this.theme = themeConfig.theme
       document.body.classList.add(themeConfig.theme)

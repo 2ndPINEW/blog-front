@@ -11,8 +11,8 @@
       <div
         class="button"
         *ngFor="let theme of themes"
-        (click)="switchTheme(theme.key)"
-      >{{theme.value}}</div>
+        (click)="switchTheme(theme.theme)"
+      >{{theme.label}}</div>
     </div>
 
     <app-blog-card></app-blog-card>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ThemeSwitchService, switchableThemes, Theme } from 'src/app/shared/service/theme-switch.service';
+import { ThemeSwitchService, Theme, ThemeConfigs, ThemeConfig } from 'src/app/shared/service/theme-switch.service';
 
 @Component({
   selector: 'app-settings',
@@ -11,8 +11,8 @@ export class SettingsComponent {
     private themeService: ThemeSwitchService
   ) { }
 
-  get themes (): { key: Theme, value: string }[] {
-    return switchableThemes
+  get themes (): ThemeConfig[] {
+    return ThemeConfigs
   }
 
   switchTheme (theme: Theme): void {
