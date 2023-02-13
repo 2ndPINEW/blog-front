@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
-export type Theme = 'none' | 'halloween' | 'xmas' | 'spring'
+// TODO: 型の定義が複数変更必要で微妙だから直す
+export type Theme = 'none' | 'halloween' | 'xmas' | 'spring' | 'valentine'
 
 interface ThemeConfig {
   theme: Theme
@@ -20,6 +21,10 @@ export const switchableThemes: { key: Theme, value: string }[] = [
   }, {
     key: 'spring',
     value: '春'
+  }
+  , {
+    key: 'valentine',
+    value: 'バレンタイン'
   }
 ]
 
@@ -52,6 +57,11 @@ export class ThemeSwitchService {
       theme: 'spring',
       condition: () => {
         return today.getMonth() === 3
+      }
+    }, {
+      theme: 'valentine',
+      condition: () => {
+        return today.getMonth() === 1
       }
     }]
 
