@@ -61,7 +61,7 @@ export class ThemeSwitchService {
     }, {
       theme: 'valentine',
       condition: () => {
-        return today.getMonth() === 1
+        return today.getMonth() === 1 && today.getDate() === 14
       }
     }]
 
