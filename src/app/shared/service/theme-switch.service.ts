@@ -9,12 +9,12 @@ export interface ThemeConfig {
 export type Theme = 'none' | 'halloween' | 'xmas' | 'spring' | 'valentine'
 
 export const ThemeConfigs: ThemeConfig[] = [{
-    theme: 'none',
-    label: 'リセット',
-    condition: (_: Date) => {
-      return false
-    }
-  }, {
+  theme: 'none',
+  label: 'リセット(自動)',
+  condition: (_: Date) => {
+    return false
+  }
+}, {
   theme: 'halloween',
   label: 'ハロウィン',
   condition: (today: Date) => {
