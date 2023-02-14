@@ -9,8 +9,14 @@ export interface ThemeConfig {
 export type Theme = 'none' | 'halloween' | 'xmas' | 'spring' | 'valentine'
 
 export const ThemeConfigs: ThemeConfig[] = [{
+    theme: 'none',
+    label: 'リセット',
+    condition: (_: Date) => {
+      return false
+    }
+  }, {
   theme: 'halloween',
-  label: 'リセット(自動)',
+  label: 'ハロウィン',
   condition: (today: Date) => {
     return today.getDate() >= 24 && today.getMonth() === 9
   }
@@ -57,11 +63,7 @@ export class ThemeSwitchService {
   }
 
   setDefaultTheme (theme: Theme): void {
-    if (theme === 'none') {
-      window.sessionStorage.removeItem('theme')
-    } else {
-      window.sessionStorage.setItem('theme', theme)
-    }
+    window.sessionStorage.setItem('theme', theme)
     this.init()
   }
 
