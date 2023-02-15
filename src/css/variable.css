@@ -5,6 +5,8 @@
   /* ---------------------------- */
   --color-background: #ffffff;
 
+  --color-dividing-line: #d2d2d2;
+
   /* ---------------------------- */
   /* ヘッダーカラー */
   /* ---------------------------- */
@@ -89,23 +91,5 @@
 /* ダークモード用のカラースキーマ */
 /* @media (prefers-color-scheme: dark) {
 :root {
-  --color-background: #202124;
-
-  --color-surface: #4A522D;
-  --color-on-surface: #ffffff;
-
-  --color-chip-hover: #6B7642;
-  --color-chip-selected: #B4BE55;
-
-  --color-header: #8A965D;
-  --color-on-header: #ffffff;
-
-  --color-border: #919191;
-
-  --color-text-heading: #ebebeb;
-  --color-text-sanitized: #dbdbdb;
-
-  --color-accent: #c22de0;
-  --color-warn: #ff4100;
 }
 } */
