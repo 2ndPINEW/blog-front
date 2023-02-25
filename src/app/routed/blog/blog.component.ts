@@ -31,7 +31,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   path = this.route.snapshot.paramMap.get('path')
   data: BlogPageData | undefined
 
-  indexLevels: HtmlHeadLevel[] = [1, 2, 3]
+  indexLevels: HtmlHeadLevel[] = [1, 2]
   readingSection: SectionContent | undefined = undefined
 
   recommends: MetaData[] = []
