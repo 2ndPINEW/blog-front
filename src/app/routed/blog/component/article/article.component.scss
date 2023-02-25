@@ -42,16 +42,22 @@
 
     p {
       margin: 8px 0;
-      color: var(--color-text-sanitized)
+      color: var(--color-text-sanitized);
     }
 
     ol {
       margin: 8px 0;
-      color: var(--color-text-sanitized)
+      color: var(--color-text-sanitized);
     }
 
     li {
       margin: 8px 0;
+      color: var(--color-text-sanitized);
+    }
+
+    summary {
+      color: var(--color-text-sanitized);
+      cursor: pointer;
     }
 
     img {
