@@ -6,7 +6,13 @@ export interface ThemeConfig {
   condition: (today: Date) => boolean;
 }
 
-export type Theme = "none" | "halloween" | "xmas" | "spring" | "valentine";
+export type Theme =
+  | "none"
+  | "halloween"
+  | "xmas"
+  | "spring"
+  | "valentine"
+  | "summer";
 
 export const ThemeConfigs: ThemeConfig[] = [
   {
@@ -35,6 +41,13 @@ export const ThemeConfigs: ThemeConfig[] = [
     },
   },
   {
+    theme: "valentine",
+    label: "バレンタイン",
+    condition: (today: Date) => {
+      return today.getMonth() === 1 && today.getDate() === 14;
+    },
+  },
+  {
     theme: "spring",
     label: "春",
     condition: (today: Date) => {
@@ -42,10 +55,10 @@ export const ThemeConfigs: ThemeConfig[] = [
     },
   },
   {
-    theme: "valentine",
-    label: "バレンタイン",
-    condition: (today: Date) => {
-      return today.getMonth() === 1 && today.getDate() === 14;
+    theme: "summer",
+    label: "夏",
+    condition: (_today: Date) => {
+      return false;
     },
   },
 ];
