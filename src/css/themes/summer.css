@@ -2,7 +2,7 @@
   /* ---------------------------- */
   /* 背景(ボディー)カラー */
   /* ---------------------------- */
-  --color-background: #F2F1EB;
+  --color-background: #EDEDE4;
 
   --color-dividing-line: #abcae6;
 
@@ -17,10 +17,10 @@
   /* ---------------------------- */
   /* フッターカラー */
   /* ---------------------------- */
-  --color-footer: #EDEDE4;
-  --color-on-footer: #138DA7;
-  --color-footer-text-heading: #138DA7;
-  --color-footer-text-sanitized: #138DA7;
+  --color-footer: #64b6be;
+  --color-on-footer: #ffffff;
+  --color-footer-text-heading: #ffffff;
+  --color-footer-text-sanitized: #ffffff;
 
 
   /* ---------------------------- */
