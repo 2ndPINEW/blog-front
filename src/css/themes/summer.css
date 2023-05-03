@@ -26,18 +26,18 @@
   /* ---------------------------- */
   /* カードカラー */
   /* ---------------------------- */
-  --color-card-surface: #6eb8be;
+  --color-card-surface: #64b6be;
   --color-card-text-heading: #ffffff;
   --color-card-text-sanitized: #ffffff;
-  --color-card-surface-hover: #E5C228;
+  --color-card-surface-hover: #329098;
 
   /* ---------------------------- */
   /* チップカラー */
   /* ---------------------------- */
   --color-chip-surface: #10501C;
-  --color-chip-surface-fill: #E5C228;
-  --color-chip-surface-hover: #A25023;
-  --color-chip-surface-selected: #A25023;
+  --color-chip-surface-fill: #10501C;
+  --color-chip-surface-hover: #0a3211;
+  --color-chip-surface-selected: #0a3211;
 
   --color-chip-text: #ffffff;
   --color-chip-text-fill: #ffffff;
