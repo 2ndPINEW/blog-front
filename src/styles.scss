@@ -2,10 +2,7 @@
 
 @use 'css/reset.css';
 @use 'css/variable.css';
-@use 'css/themes/halloween.css';
-@use 'css/themes/xmas.css';
-@use 'css/themes/spring.css';
-@use 'css/themes/valentine.css';
+@use 'css/themes/index.scss';
 @use 'css/util.css';
 
 .app-loading {

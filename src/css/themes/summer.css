@@ -1,0 +1,83 @@
+.summer {
+  /* ---------------------------- */
+  /* 背景(ボディー)カラー */
+  /* ---------------------------- */
+  --color-background: #F2F1EB;
+
+  --color-dividing-line: #abcae6;
+
+  /* ---------------------------- */
+  /* ヘッダーカラー */
+  /* ---------------------------- */
+  --color-header: #51A8F3;
+  --color-on-header: #ffffff;
+  --color-header-text-heading: #ffffff;
+  --color-header-text-sanitized: #ffffff;
+
+  /* ---------------------------- */
+  /* フッターカラー */
+  /* ---------------------------- */
+  --color-footer: #EDEDE4;
+  --color-on-footer: #138DA7;
+  --color-footer-text-heading: #138DA7;
+  --color-footer-text-sanitized: #138DA7;
+
+
+  /* ---------------------------- */
+  /* カードカラー */
+  /* ---------------------------- */
+  --color-card-surface: #6eb8be;
+  --color-card-text-heading: #ffffff;
+  --color-card-text-sanitized: #ffffff;
+  --color-card-surface-hover: #E5C228;
+
+  /* ---------------------------- */
+  /* チップカラー */
+  /* ---------------------------- */
+  --color-chip-surface: #10501C;
+  --color-chip-surface-fill: #E5C228;
+  --color-chip-surface-hover: #A25023;
+  --color-chip-surface-selected: #A25023;
+
+  --color-chip-text: #ffffff;
+  --color-chip-text-fill: #ffffff;
+  --color-chip-text-hover: #ffffff;
+  --color-chip-text-selected: #ffffff;
+
+  /* ---------------------------- */
+  /* テキストカラー */
+  /* ---------------------------- */
+  --color-text-heading: #11464a;
+  --color-text-sanitized: #1b585d;
+  --color-text-toc: #ffffff;
+
+  /* ---------------------------- */
+  /* プログレスバー */
+  /* ---------------------------- */
+  --color-surface-progress-bar: #E5C228;
+  --color-background-progress-bar: #ffffff;
+
+
+  /* ---------------------------- */
+  /* スケルトン */
+  /* ---------------------------- */
+  --color-skeleton: #8dbee8;
+  --color-skeleton-line: #51A8F3;
+
+  /* ---------------------------- */
+  /* リンク */
+  /* ---------------------------- */
+  --color-link: #2977bc;
+  --color-link-hover: #2977bc;
+
+  /* ---------------------------- */
+  /* モバイルのTOCアイコン */
+  /* ---------------------------- */
+  --color-surface-mobile-toc-icon: #51A8F3;
+  --color-mobile-toc-icon: #EDEDE4;
+
+  /* ---------------------------- */
+  /* 影 */
+  /* ---------------------------- */
+  --color-shadow-rgb: 0, 0, 0;
+}
