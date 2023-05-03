@@ -118,8 +118,17 @@ export class ThemeSwitchService {
       case "halloween":
         return "/assets/images/service/logo_s.png";
       case "xmas":
-        const index = Math.floor(Math.random() * 3) + 1;
-        return `/assets/images/xmas/icons/${index}.png`;
+        const xmasIconIndex = Math.floor(Math.random() * 3) + 1;
+        return `/assets/images/xmas/icons/${xmasIconIndex}.png`;
+      case "spring":
+        const springIconIndex = Math.floor(Math.random() * 3) + 1;
+        return `/assets/images/spring/icons/${springIconIndex}.png`;
+      case "summer":
+        const summerIconIndex = Math.floor(Math.random() * 11) + 1;
+        return `/assets/images/summer/icons/${summerIconIndex}.png`;
+      case "valentine":
+        const valentineIconIndex = Math.floor(Math.random() * 4) + 1;
+        return `/assets/images/valentine/icons/${valentineIconIndex}.png`;
       default:
         return undefined;
     }
