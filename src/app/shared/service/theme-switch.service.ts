@@ -17,7 +17,7 @@ export type Theme =
 export const ThemeConfigs: ThemeConfig[] = [
   {
     theme: "none",
-    label: "リセット(自動)",
+    label: "リセット",
     condition: (_: Date) => {
       return false;
     },
@@ -51,14 +51,18 @@ export const ThemeConfigs: ThemeConfig[] = [
     theme: "spring",
     label: "春",
     condition: (today: Date) => {
-      return today.getMonth() === 3;
+      return (
+        today.getMonth() === 3 && today.getDate() >= 5 && today.getDate() <= 20
+      );
     },
   },
   {
     theme: "summer",
     label: "夏",
-    condition: (_today: Date) => {
-      return false;
+    condition: (today: Date) => {
+      return (
+        today.getMonth() === 6 && today.getDate() >= 7 && today.getDate() <= 23
+      );
     },
   },
 ];
@@ -73,15 +77,18 @@ export class ThemeSwitchService {
 
   init(): void {
     const today = new Date();
-    const forceUseTheme = sessionStorage.getItem("theme");
+    const forceUseTheme = sessionStorage.getItem("theme") ?? "none";
 
     document.body.className = "";
     this.theme = "none";
 
-    const themeConfig = ThemeConfigs.find(
-      (themeConfig) =>
-        themeConfig.condition(today) || themeConfig.theme === forceUseTheme
-    );
+    const themeConfig =
+      forceUseTheme !== "none"
+        ? ThemeConfigs.find(
+            (themeConfig) => themeConfig.theme === forceUseTheme
+          )
+        : ThemeConfigs.find((themeConfig) => themeConfig.condition(today));
+
     if (themeConfig) {
       this.theme = themeConfig.theme;
       document.body.classList.add(themeConfig.theme);
