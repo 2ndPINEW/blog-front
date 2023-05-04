@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  NgZone,
   OnChanges,
   Renderer2,
   SimpleChanges,
@@ -20,11 +19,7 @@ export class ArticleComponent implements OnChanges {
 
   html: SafeHtml | undefined;
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    private zone: NgZone,
-    private renderer: Renderer2
-  ) {}
+  constructor(private sanitizer: DomSanitizer, private renderer: Renderer2) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["stringHtml"]) {
