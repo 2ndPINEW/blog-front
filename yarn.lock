@@ -355,6 +355,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/elements@npm:15.0.4":
+  version: 15.0.4
+  resolution: "@angular/elements@npm:15.0.4"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/core": 15.0.4
+    rxjs: ^6.5.3 || ^7.4.0
+  checksum: e964a72579e96370d1a26c36ed4c226f0d24ece2ceba6c93813a23139134e7a793f040786c5b49ff02651ba453d7ba0fa2a286ee4eb581ad1ccb6bd5b8abed0c
+  languageName: node
+  linkType: hard
+
 "@angular/forms@npm:^15.0.4":
   version: 15.0.4
   resolution: "@angular/forms@npm:15.0.4"
@@ -3314,6 +3326,7 @@ __metadata:
     "@angular/compiler": ^15.0.4
     "@angular/compiler-cli": ^15.0.4
     "@angular/core": ^15.0.4
+    "@angular/elements": 15.0.4
     "@angular/forms": ^15.0.4
     "@angular/platform-browser": ^15.0.4
     "@angular/platform-browser-dynamic": ^15.0.4
