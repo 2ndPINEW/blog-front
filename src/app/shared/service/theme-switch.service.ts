@@ -17,7 +17,7 @@ export type Theme =
 export const ThemeConfigs: ThemeConfig[] = [
   {
     theme: "none",
-    label: "リセット",
+    label: "自動",
     condition: (_: Date) => {
       return false;
     },
