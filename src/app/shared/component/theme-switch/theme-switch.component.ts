@@ -18,6 +18,10 @@ export class ThemeSwitchComponent {
     return ThemeConfigs;
   }
 
+  get currentTheme(): Theme {
+    return this.themeService.theme;
+  }
+
   switchTheme(theme: Theme): void {
     this.themeService.setDefaultTheme(theme);
   }

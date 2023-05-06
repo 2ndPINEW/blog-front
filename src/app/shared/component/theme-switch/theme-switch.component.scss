@@ -33,6 +33,12 @@
         background-color: var(--color-chip-surface-hover);
         color: var(--color-chip-text-hover);
       }
+
+      &.selected {
+        background-color: var(--color-chip-surface-selected);
+        color: var(--color-chip-text-selected);
+        border-radius: 16px;
+      }
     }
   }
 }

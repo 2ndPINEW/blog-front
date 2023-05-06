@@ -1,3 +1,4 @@
 <div class="buttons">
-  <div class="button" *ngFor="let theme of themes" (click)="switchTheme(theme.theme)">{{theme.label}}</div>
+  <div class="button" [class.selected]="theme.theme === currentTheme" *ngFor="let theme of themes"
+    (click)="switchTheme(theme.theme)">{{theme.label}}</div>
 </div>
