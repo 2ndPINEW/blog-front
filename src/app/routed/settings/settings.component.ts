@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MetaData } from 'src/app/shared/service/blog.interface';
 import { ThemeSwitchService, Theme, ThemeConfigs, ThemeConfig } from 'src/app/shared/service/theme-switch.service';
 
 @Component({
@@ -13,6 +14,15 @@ export class SettingsComponent {
 
   get themes (): ThemeConfig[] {
     return ThemeConfigs
+  }
+
+  previewData: MetaData = {
+    date: "9999/99/99",
+    path: "/path",
+    tags: [],
+    icon: "/assets/test.png",
+    title: "ブログカードプレビュー",
+    description: "ブログカードプレビューを表示します。",
   }
 
   switchTheme (theme: Theme): void {
