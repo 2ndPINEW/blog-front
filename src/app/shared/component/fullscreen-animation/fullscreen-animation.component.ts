@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FullscreenAnimationService } from "../../service/fullscreen-animation.service";
 import { ThemeSwitchService } from "../../service/theme-switch.service";
+import { Observable, combineLatest, map } from "rxjs";
 
 @Component({
   selector: "app-fullscreen-animation",
@@ -13,23 +14,30 @@ export class FullscreenAnimationComponent {
     private animationService: FullscreenAnimationService
   ) {}
 
-  get leafColors(): string[] | undefined {
-    if (!this.animationService.isAnimationEnable) {
-      return undefined;
-    }
-    if (this.themeService.theme$.value === "spring") {
-      return [
-        "#F1CFE7",
-        "#F2AFBE",
-        "#F25DBE",
-        "#FFC6E8",
-        "#F1CFE7",
-        "#F1CFE7",
-        "#F25DBE",
-        "#F1CFE7",
-        "#F1CFE7",
-      ];
-    }
-    return undefined;
+  get leafColors$(): Observable<string[] | undefined> {
+    return combineLatest([
+      this.animationService.isAnimationEnable$,
+      this.themeService.theme$,
+    ]).pipe(
+      map(([isAnimationEnable, theme]) => {
+        if (!isAnimationEnable) {
+          return undefined;
+        }
+        if (theme === "spring") {
+          return [
+            "#F1CFE7",
+            "#F2AFBE",
+            "#F25DBE",
+            "#FFC6E8",
+            "#F1CFE7",
+            "#F1CFE7",
+            "#F25DBE",
+            "#F1CFE7",
+            "#F1CFE7",
+          ];
+        }
+        return undefined;
+      })
+    );
   }
 }
