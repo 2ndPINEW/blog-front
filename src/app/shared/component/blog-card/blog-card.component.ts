@@ -48,6 +48,8 @@ export class BlogCardComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.cdRef.detach();
+    this.cdRef.detectChanges();
     this.subscription.add(
       fromEvent(window, "resize").subscribe(() => {
         this.cdRef.detectChanges();

@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { ThemeSwitchService } from "../../service/theme-switch.service";
 import { Observable } from "rxjs";
 
@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   @Input() title: string | undefined;
