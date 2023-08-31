@@ -2,31 +2,14 @@
 <div class="toc-layout">
 
   <div class="complete-mark-area" *ngIf="complete" [class.show]="complete">
-    <img
-      class="complete-mark"
-      [src]="completeMark"
-      alt="記事を読み終わったマーク"
-    >
+    <img class="complete-mark" [src]="completeMark$ | async" alt="記事を読み終わったマーク">
   </div>
   <div #progressArea class="progress-background">
-    <div
-      #progressLine
-      class="progress-line"
-      [style.height]="progressLineHeightPx"
-    ></div>
+    <div #progressLine class="progress-line" [style.height]="progressLineHeightPx"></div>
   </div>
   <div class="heads">
-    <div
-      #toc
-      *ngFor="let head of toc"
-      (click)="onClick(head)"
-      class="head"
-      [class.level-1]="head.level === 1"
-      [class.level-2]="head.level === 2"
-      [class.level-3]="head.level === 3"
-      [class.level-4]="head.level === 4"
-      [class.level-5]="head.level === 5"
-      [class.level-6]="head.level === 6"
-    >{{head.text}}</div>
+    <div #toc *ngFor="let head of toc" (click)="onClick(head)" class="head" [class.level-1]="head.level === 1"
+      [class.level-2]="head.level === 2" [class.level-3]="head.level === 3" [class.level-4]="head.level === 4"
+      [class.level-5]="head.level === 5" [class.level-6]="head.level === 6">{{head.text}}</div>
   </div>
 </div>

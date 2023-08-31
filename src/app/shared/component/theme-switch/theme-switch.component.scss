@@ -38,6 +38,7 @@
         background-color: var(--color-chip-surface-selected);
         color: var(--color-chip-text-selected);
         border-radius: 16px;
+        pointer-events: none;
       }
     }
   }

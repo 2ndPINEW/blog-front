@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import {
   Theme,
   ThemeConfig,
   ThemeSwitchService,
   ThemeConfigs,
 } from "../../service/theme-switch.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-theme-switch",
@@ -12,21 +13,17 @@ import {
   styleUrls: ["./theme-switch.component.scss"],
 })
 export class ThemeSwitchComponent {
-  constructor(
-    private themeService: ThemeSwitchService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private themeService: ThemeSwitchService) {}
 
   get themes(): ThemeConfig[] {
     return ThemeConfigs;
   }
 
-  get currentTheme(): Theme {
-    return this.themeService.theme;
+  get currentTheme$(): Observable<Theme> {
+    return this.themeService.theme$;
   }
 
   switchTheme(theme: Theme): void {
     this.themeService.setDefaultTheme(theme);
-    this.cdRef.detectChanges();
   }
 }

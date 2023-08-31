@@ -1,20 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { ThemeSwitchService } from '../../service/theme-switch.service';
+import { Component, Input } from "@angular/core";
+import { ThemeSwitchService } from "../../service/theme-switch.service";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
-  @Input() title: string | undefined
-  @Input() description: string | undefined
+  @Input() title: string | undefined;
+  @Input() description: string | undefined;
 
-  constructor (
-    private themeService: ThemeSwitchService
-  ) {}
+  constructor(private themeService: ThemeSwitchService) {}
 
-  get themedIcon (): string | undefined {
-    return this.themeService.headerIcon
+  get themedIcon$(): Observable<string | undefined> {
+    return this.themeService.headerIcon$;
   }
 }

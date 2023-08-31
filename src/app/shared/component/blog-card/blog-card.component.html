@@ -1,23 +1,13 @@
-<a
-  class="container"
-  [routerLink]="['/blog', data.path]"
-  [class.medium-layout]="mediumLayout"
-  [class.large-layout]="largeLayout"
-  *ngIf="data; else skeleton"
-  (mouseover)="prefetch(data.path)"
->
-  <img class="thumbnail" [src]="resourceUrl(data.icon)" alt="" loading="lazy">
+<a class="container" [routerLink]="['/blog', data.path]" [class.medium-layout]="mediumLayout"
+  [class.large-layout]="largeLayout" *ngIf="data; else skeleton" (mouseover)="prefetch(data.path)">
+  <img class="thumbnail" [src]="resourceUrl$(data.icon) | async" alt="" loading="lazy">
   <div class="title">{{data.title}}</div>
   <div class="description">{{data.description}}</div>
   <div class="date">{{data.date}}</div>
 </a>
 
 <ng-template #skeleton>
-  <div
-    class="container"
-    [class.medium-layout]="mediumLayout"
-    [class.large-layout]="largeLayout"
-  >
+  <div class="container" [class.medium-layout]="mediumLayout" [class.large-layout]="largeLayout">
     <div class="thumbnail shimmer"></div>
     <div class="title shimmer"></div>
     <div class="description shimmer"></div>

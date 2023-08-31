@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, map } from "rxjs";
 
 export interface ThemeConfig {
   theme: Theme;
@@ -71,16 +72,23 @@ export const ThemeConfigs: ThemeConfig[] = [
   providedIn: "root",
 })
 export class ThemeSwitchService {
-  theme: Theme = "none";
+  theme$ = new BehaviorSubject<Theme>("none");
 
-  constructor() {}
+  constructor() {
+    this.theme$
+      .pipe(
+        map((theme) => {
+          return theme === "none" ? "" : theme;
+        })
+      )
+      .subscribe((theme) => {
+        document.body.className = theme;
+      });
+  }
 
   init(): void {
     const today = new Date();
     const forceUseTheme = sessionStorage.getItem("theme") ?? "none";
-
-    document.body.className = "";
-    this.theme = "none";
 
     const themeConfig =
       forceUseTheme !== "none"
@@ -90,8 +98,9 @@ export class ThemeSwitchService {
         : ThemeConfigs.find((themeConfig) => themeConfig.condition(today));
 
     if (themeConfig) {
-      this.theme = themeConfig.theme;
-      document.body.classList.add(themeConfig.theme);
+      this.theme$.next(themeConfig.theme);
+    } else {
+      this.theme$.next("none");
     }
   }
 
@@ -101,51 +110,63 @@ export class ThemeSwitchService {
   }
 
   /** ヘッダーのアイコン */
-  get headerIcon(): string | undefined {
-    switch (this.theme) {
-      case "halloween":
-        return "/assets/images/halloween/halloween_text_e.png";
-      case "xmas":
-        return `/assets/images/xmas/logo.png`;
-      default:
-        return undefined;
-    }
+  get headerIcon$(): Observable<string | undefined> {
+    return this.theme$.pipe(
+      map((theme) => {
+        switch (theme) {
+          case "halloween":
+            return "/assets/images/halloween/halloween_text_e.png";
+          case "xmas":
+            return `/assets/images/xmas/logo.png`;
+          default:
+            return undefined;
+        }
+      })
+    );
   }
 
   /** 記事カードのサムネイル */
-  get blogCardThumbnail(): string | undefined {
-    switch (this.theme) {
-      case "halloween":
-        return "/assets/images/service/logo_s.png";
-      case "xmas":
-        const xmasIconIndex = Math.floor(Math.random() * 3) + 1;
-        return `/assets/images/xmas/icons/${xmasIconIndex}.png`;
-      case "spring":
-        const springIconIndex = Math.floor(Math.random() * 3) + 1;
-        return `/assets/images/spring/icons/${springIconIndex}.png`;
-      case "summer":
-        const summerIconIndex = Math.floor(Math.random() * 11) + 1;
-        return `/assets/images/summer/icons/${summerIconIndex}.png`;
-      case "valentine":
-        const valentineIconIndex = Math.floor(Math.random() * 4) + 1;
-        return `/assets/images/valentine/icons/${valentineIconIndex}.png`;
-      default:
-        return undefined;
-    }
+  get blogCardThumbnail$(): Observable<string | undefined> {
+    return this.theme$.pipe(
+      map((theme) => {
+        switch (theme) {
+          case "halloween":
+            return "/assets/images/service/logo_s.png";
+          case "xmas":
+            const xmasIconIndex = Math.floor(Math.random() * 3) + 1;
+            return `/assets/images/xmas/icons/${xmasIconIndex}.png`;
+          case "spring":
+            const springIconIndex = Math.floor(Math.random() * 3) + 1;
+            return `/assets/images/spring/icons/${springIconIndex}.png`;
+          case "summer":
+            const summerIconIndex = Math.floor(Math.random() * 11) + 1;
+            return `/assets/images/summer/icons/${summerIconIndex}.png`;
+          case "valentine":
+            const valentineIconIndex = Math.floor(Math.random() * 4) + 1;
+            return `/assets/images/valentine/icons/${valentineIconIndex}.png`;
+          default:
+            return undefined;
+        }
+      })
+    );
   }
 
   /** 目次の読み終わったマーク */
-  get tocCompleteMark(): string {
-    switch (this.theme) {
-      case "none":
-        return "/assets/images/service/logo_s.png";
-      case "halloween":
-        return "/assets/images/halloween/halloween_mark_majo.png";
-      case "xmas":
-        return "/assets/images/xmas/icons/2.png";
-      default:
-        return "/assets/images/service/logo_s.png";
-    }
+  get tocCompleteMark$(): Observable<string> {
+    return this.theme$.pipe(
+      map((theme) => {
+        switch (theme) {
+          case "none":
+            return "/assets/images/service/logo_s.png";
+          case "halloween":
+            return "/assets/images/halloween/halloween_mark_majo.png";
+          case "xmas":
+            return "/assets/images/xmas/icons/2.png";
+          default:
+            return "/assets/images/service/logo_s.png";
+        }
+      })
+    );
   }
 }
 
