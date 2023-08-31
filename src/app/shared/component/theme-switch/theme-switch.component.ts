@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import {
   Theme,
   ThemeConfig,
@@ -12,7 +12,10 @@ import {
   styleUrls: ["./theme-switch.component.scss"],
 })
 export class ThemeSwitchComponent {
-  constructor(private themeService: ThemeSwitchService) {}
+  constructor(
+    private themeService: ThemeSwitchService,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   get themes(): ThemeConfig[] {
     return ThemeConfigs;
@@ -24,5 +27,6 @@ export class ThemeSwitchComponent {
 
   switchTheme(theme: Theme): void {
     this.themeService.setDefaultTheme(theme);
+    this.cdRef.detectChanges();
   }
 }
