@@ -13,14 +13,7 @@
   .header-background {
     background-color: var(--color-header);
 
-    border-bottom-right-radius: 1000px 200px;
-    border-bottom-left-radius: 1000px 200px;
-    
-    margin-left: -100px;
-    margin-right: -100px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 32px;
+    padding-bottom: 16px;
 
     .header-content {
       padding: 16px;
@@ -33,7 +26,7 @@
           scale: 1.1;
           cursor: pointer;
         }
-    
+
         .icon {
           width: 32px;
           height: 32px;
@@ -47,7 +40,7 @@
           width: auto;
           height: 32px;
         }
-    
+
         .title {
           margin-left: 8px;
           font-size: 18px;
@@ -57,7 +50,7 @@
       }
 
       .page-title {
-        margin-top: 40px;
+        margin-top: 16px;
         font-size: 20px;
         font-weight: bold;
         color: var(--color-header-text-heading);
@@ -87,25 +80,19 @@
       }
     }
 
-      
-    @include mq(tablet) {
-      border-bottom-right-radius: 2000px 300px;
-      border-bottom-left-radius: 2000px 300px;
-      margin-left: -200px;
-      margin-right: -200px;
-      padding-left: 200px;
-      padding-right: 200px;
-      padding-bottom: 40px;
 
+    @include mq(tablet) {
       .header-content {
         .site-title {
           .icon {
             width: 36px;
             height: 36px;
           }
+
           .themed-logo {
             height: 36px;
           }
+
           .title {
             font-size: 20px;
           }
@@ -133,12 +120,11 @@
     }
 
     @include mq(spc) {
-      padding-bottom: 32px;
       .header-content {
         padding: 32px;
 
         .page-title {
-          margin-top: 64px;
+          margin-top: 16px;
           font-size: 32px;
 
           &.shimmer {
@@ -160,19 +146,21 @@
     }
 
     @include mq(pc) {
-      border-bottom-right-radius: 3000px 300px;
-      border-bottom-left-radius: 3000px 300px;
-      padding-bottom: 48px;
+      padding-bottom: 42px;
+
       .header-content {
         padding: 32px;
+
         .site-title {
           .icon {
             width: 40px;
             height: 40px;
           }
+
           .themed-logo {
             height: 40px;
           }
+
           .title {
             font-size: 24px;
           }

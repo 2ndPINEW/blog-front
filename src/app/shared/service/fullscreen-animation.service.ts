@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import confetti from "canvas-confetti";
-import { take, timer } from "rxjs";
+import { BehaviorSubject, take, timer } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class FullscreenAnimationService {
-  isAnimationEnable: boolean = true;
+  isAnimationEnable$ = new BehaviorSubject<boolean>(true);
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -18,11 +18,11 @@ export class FullscreenAnimationService {
   }
 
   enableAnimation(): void {
-    this.isAnimationEnable = true;
+    this.isAnimationEnable$.next(true);
   }
 
   disableAnimation(): void {
-    this.isAnimationEnable = false;
+    this.isAnimationEnable$.next(false);
   }
 
   confetti() {
